@@ -2,11 +2,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <script>document.write(new Date().getFullYear())</script> © Amrita Janani and Devipuram.
+                <script>document.write(new Date().getFullYear())</script> © Raj SNN Corp.
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by Amrita Janani and Devipuram
+                    Design & Develop by Raj SNN Corp
                 </div>
             </div>
         </div>

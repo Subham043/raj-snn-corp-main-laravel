@@ -63,10 +63,6 @@
 <!-- password-addon init -->
 <script src="{{ asset('admin/js/pages/password-addon.init.js') }}"></script>
 <script type="text/javascript">
-    $(function () {
-        $('#email').focus();
-
-    });
 
 // initialize the validation library
 const validation = new JustValidate('#loginForm', {
@@ -92,9 +88,7 @@ validation
       errorMessage: 'Password is required',
     }
   ])
-//   .showErrors(errors:{ '#email': 'The email is invalid' })
   .onSuccess((event) => {
-    // event.target.showErrors({ '#email': 'The email is invalid' })
     event.target.submit();
   });
 </script>

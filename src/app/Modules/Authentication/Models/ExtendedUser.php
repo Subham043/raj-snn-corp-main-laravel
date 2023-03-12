@@ -19,10 +19,6 @@ class ExtendedUser extends User
 
     protected $appends = ['account_status', 'role'];
 
-    protected function getPassword(){
-        return $this->password;
-    }
-
     protected function accountStatus(): Attribute
     {
         return new Attribute(

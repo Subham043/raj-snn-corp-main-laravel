@@ -2,9 +2,9 @@
 
 namespace App\Modules\Authentication\Services;
 
-use App\Modules\Authentication\Models\ExtendedUser as User;
 use App\Exceptions\UserAccessException;
 use App\Http\Services\DecryptService;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
 class UserService

@@ -50,29 +50,36 @@
                             <div class="tab-pane active" id="personalDetails" role="tabpanel">
                                 <form action="javascript:void(0);" id="profileForm">
                                     <div class="row">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <div class="mb-3">
-                                                <label for="name" class="form-label">Name</label>
-                                                <input type="text" class="form-control" id="name"
-                                                    placeholder="Enter your firstname" value="{{Auth::user()->name}}">
+                                                <label for="first_name" class="form-label">First Name</label>
+                                                <input type="text" class="form-control" id="first_name"
+                                                    placeholder="Enter your first name" value="{{Auth::user()->first_name}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="mb-3">
+                                                <label for="last_name" class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" id="last_name"
+                                                    placeholder="Enter your first name" value="{{Auth::user()->last_name}}">
                                             </div>
                                         </div>
                                         <!--end col-->
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <div class="mb-3">
                                                 <label for="phone" class="form-label">Phone
                                                     Number</label>
                                                 <input type="text" class="form-control" id="phone"
-                                                    placeholder="Enter your phone number" readonly value="{{Auth::user()->phone}}">
+                                                    placeholder="Enter your phone number" value="{{Auth::user()->phone}}">
                                             </div>
                                         </div>
                                         <!--end col-->
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Email
                                                     Address</label>
                                                 <input type="email" class="form-control" id="email"
-                                                    placeholder="Enter your email" readonly value="{{Auth::user()->email}}">
+                                                    placeholder="Enter your email" value="{{Auth::user()->email}}">
                                             </div>
                                         </div>
                                         <!--end col-->
@@ -93,9 +100,9 @@
                                     <div class="row g-2">
                                         <div class="col-lg-4">
                                             <div>
-                                                <label for="opassword" class="form-label">Old
+                                                <label for="old_password" class="form-label">Old
                                                     Password*</label>
-                                                <input type="password" class="form-control" id="opassword"
+                                                <input type="password" class="form-control" name="old_password" id="old_password"
                                                     placeholder="Enter current password">
                                             </div>
                                         </div>
@@ -104,16 +111,16 @@
                                             <div>
                                                 <label for="password" class="form-label">New
                                                     Password*</label>
-                                                <input type="password" class="form-control" id="password"
+                                                <input type="password" class="form-control" name="password" id="password"
                                                     placeholder="Enter new password">
                                             </div>
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-4">
                                             <div>
-                                                <label for="cpassword" class="form-label">Confirm
+                                                <label for="confirm_password" class="form-label">Confirm
                                                     Password*</label>
-                                                <input type="password" class="form-control" id="cpassword"
+                                                <input type="password" class="form-control" name="confirm_password" id="confirm_password"
                                                     placeholder="Confirm password">
                                             </div>
                                         </div>
@@ -148,28 +155,6 @@
 
 
 @section('javascript')
-<script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
-<script src="{{ asset('admin/js/pages/just-validate-plugin-date.production.min.js') }}"></script>
-<script type="text/javascript">
-
-const errorToast = (message) =>{
-    iziToast.error({
-        title: 'Error',
-        message: message,
-        position: 'bottomCenter',
-        timeout:7000
-    });
-}
-const successToast = (message) =>{
-    iziToast.success({
-        title: 'Success',
-        message: message,
-        position: 'bottomCenter',
-        timeout:6000
-    });
-}
-
-</script>
 
 <script type="text/javascript">
 
@@ -181,42 +166,52 @@ const validation = new JustValidate('#profileForm', {
 });
 // apply rules to form fields
 validation
-  .addField('#name', [
+  .addField('#first_name', [
     {
       rule: 'required',
-      errorMessage: 'Name is required',
+      errorMessage: 'First Name is required',
     },
     {
         rule: 'customRegexp',
         value: /^[a-zA-Z\s]*$/,
-        errorMessage: 'Name is invalid',
+        errorMessage: 'First Name is invalid',
+    },
+  ])
+  .addField('#last_name', [
+    {
+      rule: 'required',
+      errorMessage: 'Last Name is required',
+    },
+    {
+        rule: 'customRegexp',
+        value: /^[a-zA-Z\s]*$/,
+        errorMessage: 'Last Name is invalid',
     },
   ])
   .onSuccess(async (event) => {
     var submitBtn = document.getElementById('submitBtn')
-    submitBtn.innerHTML = `
-        <span class="d-flex align-items-center">
-            <span class="spinner-border flex-shrink-0" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </span>
-            <span class="flex-grow-1 ms-2">
-                Loading...
-            </span>
-        </span>
-        `
+    submitBtn.innerHTML = spinner
     submitBtn.disabled = true;
     try {
         var formData = new FormData();
-        formData.append('name',document.getElementById('name').value)
-        formData.append('refreshUrl','{{URL::current()}}')
-        const response = await axios.post('{{route('profile_update')}}', formData)
+        formData.append('first_name',document.getElementById('first_name').value)
+        formData.append('last_name',document.getElementById('last_name').value)
+        formData.append('email',document.getElementById('email').value)
+        formData.append('phone',document.getElementById('phone').value)
+        const response = await axios.post('{{route('profile.post')}}', formData)
         successToast(response.data.message)
-        setTimeout(function(){
-            window.location.replace(response.data.url);
-        }, 1000);
     }catch (error){
-        if(error?.response?.data?.form_error?.name){
-            errorToast(error?.response?.data?.form_error?.name[0])
+        if(error?.response?.data?.form_error?.first_name){
+            errorToast(error?.response?.data?.form_error?.first_name[0])
+        }
+        if(error?.response?.data?.form_error?.last_name){
+            errorToast(error?.response?.data?.form_error?.last_name[0])
+        }
+        if(error?.response?.data?.form_error?.email){
+            errorToast(error?.response?.data?.form_error?.email[0])
+        }
+        if(error?.response?.data?.form_error?.phone){
+            errorToast(error?.response?.data?.form_error?.phone[0])
         }
     }finally{
         submitBtn.innerHTML =  `
@@ -240,7 +235,7 @@ validationPassword
       errorMessage: 'Password is required',
     }
   ])
-  .addField('#cpassword', [
+  .addField('#confirm_password', [
     {
       rule: 'required',
       errorMessage: 'Confirm Password is required',
@@ -258,7 +253,7 @@ validationPassword
         errorMessage: 'Password and Confirm Password must be same',
     },
   ])
-  .addField('#opassword', [
+  .addField('#old_password', [
     {
       rule: 'required',
       errorMessage: 'Old Password is required',
@@ -266,37 +261,25 @@ validationPassword
   ])
   .onSuccess(async (event) => {
     var submitBtn = document.getElementById('submitBtn2')
-    submitBtn.innerHTML = `
-        <span class="d-flex align-items-center">
-            <span class="spinner-border flex-shrink-0" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </span>
-            <span class="flex-grow-1 ms-2">
-                Loading...
-            </span>
-        </span>
-        `
+    submitBtn.innerHTML = spinner
     submitBtn.disabled = true;
     try {
         var formData = new FormData();
-        formData.append('opassword',document.getElementById('opassword').value)
+        formData.append('old_password',document.getElementById('old_password').value)
         formData.append('password',document.getElementById('password').value)
-        formData.append('cpassword',document.getElementById('cpassword').value)
+        formData.append('confirm_password',document.getElementById('confirm_password').value)
         formData.append('refreshUrl','{{URL::current()}}')
-        const response = await axios.post('{{route('profile_password_update')}}', formData)
+        const response = await axios.post('{{route('password.post')}}', formData)
         successToast(response.data.message)
-        setTimeout(function(){
-            window.location.replace(response.data.url);
-        }, 1000);
     }catch (error){
-        if(error?.response?.data?.form_error?.opassword){
-            errorToast(error?.response?.data?.form_error?.opassword[0])
+        if(error?.response?.data?.form_error?.old_password){
+            errorToast(error?.response?.data?.form_error?.old_password[0])
         }
         if(error?.response?.data?.form_error?.password){
             errorToast(error?.response?.data?.form_error?.password[0])
         }
-        if(error?.response?.data?.form_error?.cpassword){
-            errorToast(error?.response?.data?.form_error?.cpassword[0])
+        if(error?.response?.data?.form_error?.confirm_password){
+            errorToast(error?.response?.data?.form_error?.confirm_password[0])
         }
         if(error?.response?.data?.message){
             errorToast(error?.response?.data?.message)

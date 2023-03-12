@@ -58,10 +58,6 @@
 @section('javascript')
 
 <script type="text/javascript">
-    $(function () {
-        $('#email').focus();
-
-    });
 
 // initialize the validation library
 const validation = new JustValidate('#forgotPasswordForm', {

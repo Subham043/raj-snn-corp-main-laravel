@@ -63,10 +63,6 @@
 <!-- password-addon init -->
 <script src="{{ asset('admin/js/pages/password-addon.init.js') }}"></script>
 <script type="text/javascript">
-    $(function () {
-        $('#email').focus();
-
-    });
 
 // initialize the validation library
 const validation = new JustValidate('#loginForm', {

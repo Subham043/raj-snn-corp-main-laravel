@@ -2,13 +2,9 @@
 
 namespace App\Modules\Authentication\Services;
 
-use App\Modules\Authentication\Requests\ForgotPasswordPostRequest;
-use App\Modules\Authentication\Requests\PasswordPostRequest;
-use App\Modules\Authentication\Models\ExtendedUser as User;
 use Illuminate\Support\Facades\Auth;
-use App\Modules\Authentication\Requests\ProfilePostRequest;
-use Carbon\Carbon;
 use App\Http\Services\DecryptService;
+use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 
 class AuthService extends UserService
