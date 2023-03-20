@@ -11,7 +11,7 @@
             <div class="card-body p-4">
                 <div class="text-center mt-2">
                     <h5 class="text-primary">Welcome Back !</h5>
-                    <p class="text-muted">Sign in to continue to Amrita Janani Admin Panel.</p>
+                    <p class="text-muted">Sign in to continue to SNN RAJ CORP Admin Panel.</p>
                 </div>
                 <div class="p-2 mt-4">
                     <form id="loginForm" method="post" action="{{route('login.post')}}">

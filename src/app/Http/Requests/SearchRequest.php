@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Authentication\Requests;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 
 
-class ProfilePostRequest extends FormRequest
+class SearchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,12 +26,7 @@ class ProfilePostRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.Auth::user()->id,
-            'phone' => 'required|string|max:10|unique:users,phone,'.Auth::user()->id,
-        ];
+        return [];
     }
 
     /**
@@ -41,7 +36,7 @@ class ProfilePostRequest extends FormRequest
      */
     protected function passedValidation()
     {
-        $request = $this->safe()->only('first_name', 'last_name', 'email', 'phone');
+        $request = $this->query();
         $this->replace(Purify::clean($request));
     }
 }

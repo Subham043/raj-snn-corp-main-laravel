@@ -6,7 +6,7 @@
                     <!-- Dark Logo-->
                     <a href="{{route('profile.get')}}" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="{{ asset('main/images/fav/android-icon-192x192.png')}}" alt="" height="22">
+                            <img src="{{ asset('admin/images/logo.png')}}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
                             <img src="{{ asset('admin/images/logo.png') }}" alt="" height="17">
@@ -15,10 +15,10 @@
                     <!-- Light Logo-->
                     <a href="{{route('profile.get')}}" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="{{ asset('main/images/fav/android-icon-192x192.png')}}" alt="" height="30">
+                            <img src="{{ asset('admin/images/logo.png')}}" alt="" height="30">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ asset('admin/images/logo.png') }}" alt="" height="30">
+                            <img src="{{ asset('admin/images/logo.png') }}" alt="" height="60">
                         </span>
                     </a>
                     <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">

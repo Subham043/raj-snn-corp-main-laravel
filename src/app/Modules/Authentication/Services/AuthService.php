@@ -4,7 +4,7 @@ namespace App\Modules\Authentication\Services;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Services\DecryptService;
-use App\Models\User;
+use App\Modules\Authentication\Models\User;
 use Illuminate\Support\Facades\Crypt;
 
 class AuthService extends UserService

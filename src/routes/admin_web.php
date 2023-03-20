@@ -6,6 +6,10 @@ use App\Modules\Authentication\Controllers\LoginController;
 use App\Modules\Authentication\Controllers\LogoutController;
 use App\Modules\Authentication\Controllers\ProfileController;
 use App\Modules\Authentication\Controllers\ResetPasswordController;
+use App\Modules\Projects\Controllers\ProjectCreateController;
+use App\Modules\Projects\Controllers\ProjectDeleteController;
+use App\Modules\Projects\Controllers\ProjectPaginateController;
+use App\Modules\Projects\Controllers\ProjectUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +36,15 @@ Route::prefix('/profile')->group(function () {
     Route::get('/', [ProfileController::class, 'get', 'as' => 'profile.get'])->name('profile.get');
     Route::post('/update', [ProfileController::class, 'post', 'as' => 'profile.post'])->name('profile.post');
     Route::post('/profile-password-update', [PasswordUpdateController::class, 'post', 'as' => 'password.post'])->name('password.post');
+});
+
+Route::prefix('/project')->group(function () {
+    Route::get('/create', [ProjectCreateController::class, 'get', 'as' => 'project_create.get'])->name('project_create.get');
+    Route::post('/create-post', [ProjectCreateController::class, 'post', 'as' => 'project_create.post'])->name('project_create.post');
+    Route::get('/list', [ProjectPaginateController::class, 'get', 'as' => 'project_list.get'])->name('project_list.get');
+    Route::get('/delete/{id}', [ProjectDeleteController::class, 'get', 'as' => 'project_delete.get'])->name('project_delete.get');
+    Route::get('/update/{id}', [ProjectUpdateController::class, 'get', 'as' => 'project_update.get'])->name('project_update.get');
+    Route::post('/update-post/{id}', [ProjectUpdateController::class, 'post', 'as' => 'project_update.post'])->name('project_update.post');
 });
 
 Route::get('/logout', [LogoutController::class, 'get', 'as' => 'logout.get'])->name('logout.get');

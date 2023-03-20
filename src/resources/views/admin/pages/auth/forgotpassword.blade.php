@@ -11,7 +11,7 @@
             <div class="card-body p-4">
                 <div class="text-center mt-2">
                     <h5 class="text-primary">Forgot Password?</h5>
-                    <p class="text-muted">Reset password with Amrita Janani</p>
+                    <p class="text-muted">Reset password with SNN RAJ CORP</p>
 
                     <lord-icon
                         src="https://cdn.lordicon.com/rhvddzym.json"
