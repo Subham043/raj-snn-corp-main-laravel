@@ -3,8 +3,8 @@
 namespace App\Modules\Projects\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SearchRequest;
 use App\Modules\Projects\Services\ProjectService;
+use Illuminate\Http\Request;
 
 class ProjectPaginateController extends Controller
 {
@@ -15,9 +15,8 @@ class ProjectPaginateController extends Controller
         $this->projectService = $projectService;
     }
 
-    public function get(SearchRequest $request){
-        dd($request->query());
-        $data = $this->projectService->paginate(10);
+    public function get(Request $request){
+        $data = $this->projectService->paginate($request, 10);
         return view('admin.pages.projects.paginate')->with(
             [
                 'data' => $data

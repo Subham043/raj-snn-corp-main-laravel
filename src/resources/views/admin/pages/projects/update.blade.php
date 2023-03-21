@@ -11,13 +11,7 @@
         <!-- end page title -->
 
         <div class="row">
-        <div class="row g-4 mb-3">
-                <div class="col-sm-auto">
-                    <div>
-                        <a href="{{route('project_list.get')}}" type="button" class="btn btn-dark add-btn" id="create-btn"><i class="ri-arrow-go-back-line align-bottom me-1"></i> Go Back</a>
-                    </div>
-                </div>
-            </div>
+            @include('admin.includes.back_button', ['link'=>route('project_list.get')])
             <div class="col-lg-12">
                 <form id="countryForm" method="post" action="{{route('project_update.post', $data->id)}}" enctype="multipart/form-data">
                 @csrf
@@ -29,67 +23,25 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-3 col-md-3">
-                                        <div>
-                                            <label for="name" class="form-label">Project Name</label>
-                                            <input type="text" class="form-control" name="name" id="name" value="{{$data->name}}">
-                                            @error('name')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.input', ['key'=>'name', 'label'=>'Project Name', 'value'=>$data->name])
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
-                                        <div>
-                                            <label for="slug" class="form-label">Project Slug</label>
-                                            <input type="text" class="form-control" name="slug" id="slug" value="{{$data->slug}}">
-                                            @error('slug')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.input', ['key'=>'slug', 'label'=>'Project Slug', 'value'=>$data->slug])
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
-                                        <div>
-                                            <label for="email" class="form-label">Project Email</label>
-                                            <input type="text" class="form-control" name="email" id="email" value="{{$data->email}}">
-                                            @error('email')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.input', ['key'=>'email', 'label'=>'Project Email', 'value'=>$data->email])
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
-                                        <div>
-                                            <label for="phone" class="form-label">Project Phone</label>
-                                            <input type="text" class="form-control" name="phone" id="phone" value="{{$data->phone}}">
-                                            @error('phone')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.input', ['key'=>'phone', 'label'=>'Project Phone', 'value'=>$data->phone])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        <div>
-                                            <label for="address" class="form-label">Project Address</label>
-                                            <textarea class="form-control" name="address" id="address">{{$data->address}}</textarea>
-                                                @error('address')
-                                                    <div class="invalid-message">{{ $message }}</div>
-                                                @enderror
-                                        </div>
+                                        @include('admin.includes.textarea', ['key'=>'address', 'label'=>'Project Address', 'value'=>$data->address])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        <div>
-                                            <label for="header_logo" class="form-label">Header Logo</label>
-                                            <input class="form-control" type="file" name="header_logo" id="header_logo">
-                                            @error('header_logo')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.file_input', ['key'=>'header_logo', 'label'=>'Header Logo'])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        <div>
-                                            <label for="footer_logo" class="form-label">Footer Logo</label>
-                                            <input class="form-control" type="file" name="footer_logo" id="footer_logo">
-                                            @error('footer_logo')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.file_input', ['key'=>'footer_logo', 'label'=>'Footer Logo'])
                                     </div>
 
                                     <!--end col-->
@@ -130,40 +82,16 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-3 col-md-3">
-                                        <div>
-                                            <label for="facebook" class="form-label">Facebook</label>
-                                            <input type="text" class="form-control" name="facebook" id="facebook" value="{{$data->facebook}}">
-                                            @error('facebook')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.input', ['key'=>'facebook', 'label'=>'Facebook', 'value'=>$data->facebook])
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
-                                        <div>
-                                            <label for="instagram" class="form-label">Instagram</label>
-                                            <input type="text" class="form-control" name="instagram" id="instagram" value="{{$data->instagram}}">
-                                            @error('instagram')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.input', ['key'=>'instagram', 'label'=>'Instagram', 'value'=>$data->instagram])
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
-                                        <div>
-                                            <label for="youtube" class="form-label">Youtube</label>
-                                            <input type="text" class="form-control" name="youtube" id="youtube" value="{{$data->youtube}}">
-                                            @error('youtube')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.input', ['key'=>'youtube', 'label'=>'Youtube', 'value'=>$data->youtube])
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
-                                        <div>
-                                            <label for="linkedin" class="form-label">Linkedin</label>
-                                            <input type="text" class="form-control" name="linkedin" id="linkedin" value="{{$data->linkedin}}">
-                                            @error('linkedin')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.input', ['key'=>'linkedin', 'label'=>'Linkedin', 'value'=>$data->linkedin])
                                     </div>
 
                                 </div>
@@ -180,85 +108,31 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-6 col-md-6">
-                                        <div>
-                                            <label for="meta_title" class="form-label">Meta Title</label>
-                                            <textarea class="form-control" name="meta_title" id="meta_title">{{$data->meta_title}}</textarea>
-                                            @error('meta_title')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.textarea', ['key'=>'meta_title', 'label'=>'Meta Title', 'value'=>$data->meta_title])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        <div>
-                                            <label for="meta_description" class="form-label">Meta Description</label>
-                                            <textarea class="form-control" name="meta_description" id="meta_description">{{$data->meta_description}}</textarea>
-                                            @error('meta_description')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.textarea', ['key'=>'meta_description', 'label'=>'Meta Description', 'value'=>$data->meta_description])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        <div>
-                                            <label for="og_locale" class="form-label">Og Locale</label>
-                                            <textarea class="form-control" name="og_locale" id="og_locale">{{$data->og_locale}}</textarea>
-                                            @error('og_locale')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.textarea', ['key'=>'og_locale', 'label'=>'Og Locale', 'value'=>$data->og_locale])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        <div>
-                                            <label for="og_type" class="form-label">Og Type</label>
-                                            <textarea class="form-control" name="og_type" id="og_type">{{$data->og_type}}</textarea>
-                                            @error('og_type')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.textarea', ['key'=>'og_type', 'label'=>'Og Type', 'value'=>$data->og_type])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        <div>
-                                            <label for="og_description" class="form-label">Og Description</label>
-                                            <textarea class="form-control" name="og_description" id="og_description">{{$data->og_description}}</textarea>
-                                            @error('og_description')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.textarea', ['key'=>'og_description', 'label'=>'Og Description', 'value'=>$data->og_description])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        <div>
-                                            <label for="og_site_name" class="form-label">Og Site Name</label>
-                                            <textarea class="form-control" name="og_site_name" id="og_site_name">{{$data->og_site_name}}</textarea>
-                                            @error('og_site_name')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.textarea', ['key'=>'og_site_name', 'label'=>'Og Site Name', 'value'=>$data->og_site_name])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        <div>
-                                            <label for="og_image" class="form-label">Og Image</label>
-                                            <input class="form-control" type="file" name="og_image" id="og_image">
-                                            @error('og_image')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.file_input', ['key'=>'og_image', 'label'=>'Og Image'])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        <div>
-                                            <label for="meta_header" class="form-label">Meta Header</label>
-                                            <textarea class="form-control" name="meta_header" id="meta_header">{{$data->meta_header}}</textarea>
-                                            @error('meta_header')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.textarea', ['key'=>'meta_header', 'label'=>'Meta Header', 'value'=>$data->meta_header])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        <div>
-                                            <label for="meta_footer" class="form-label">Meta Footer</label>
-                                            <textarea class="form-control" name="meta_footer" id="meta_footer">{{$data->meta_footer}}</textarea>
-                                            @error('meta_footer')
-                                                <div class="invalid-message">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        @include('admin.includes.textarea', ['key'=>'meta_footer', 'label'=>'Meta Footer', 'value'=>$data->meta_footer])
                                     </div>
 
 

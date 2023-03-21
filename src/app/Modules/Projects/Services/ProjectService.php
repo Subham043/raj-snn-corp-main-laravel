@@ -7,6 +7,7 @@ use App\Modules\Projects\Models\Project;
 use App\Modules\Projects\Requests\ProjectCreateRequest;
 use App\Modules\Projects\Requests\ProjectUpdateRequest;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class ProjectService
@@ -21,12 +22,17 @@ class ProjectService
 
     public function all(): Collection
     {
-        return $this->projectModel->all();
+        return $this->projectModel->orderBy('id', 'DESC')->all();
     }
 
-    public function paginate(Int $limit = 10): LengthAwarePaginator
+    public function paginate(Request $request, Int $limit = 10): LengthAwarePaginator
     {
-        return $this->projectModel->paginate($limit);
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            return $this->projectModel->where('name', 'like', '%' . $search . '%')
+            ->orWhere('slug', 'like', '%' . $search . '%')->orderBy('id', 'DESC')->paginate($limit);
+        }
+        return $this->projectModel->orderBy('id', 'DESC')->paginate($limit);
     }
 
     public function getById(Int $id): Project
