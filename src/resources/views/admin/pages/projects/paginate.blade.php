@@ -62,11 +62,11 @@
                                             <td class="date">{{$item->created_at}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    {{-- <div class="edit">
-                                                        <a href="{{route('image_display', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">View</a>
-                                                    </div> --}}
                                                     <div class="edit">
                                                         <a href="{{route('project_update.get', $item->id)}}" style="background:yellow;color:black;border-color:yellow;" class="btn btn-sm btn-success edit-item-btn">Edit</a>
+                                                    </div>
+                                                    <div class="edit">
+                                                        <a href="{{route('project_about.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">About Section</a>
                                                     </div>
                                                     <div class="remove">
                                                         <button class="btn btn-sm btn-danger remove-item-btn" style="background:red" onclick="deleteHandler('{{route('project_delete.get', $item->id)}}')">Delete</button>

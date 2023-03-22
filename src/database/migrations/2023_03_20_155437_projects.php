@@ -37,6 +37,13 @@ return new class extends Migration
             $table->text('linkedin')->nullable();
             $table->integer('project_status')->default(ProjectStatusEnum::UPCOMING->label());
             $table->integer('publish_status')->default(PublishStatusEnum::ACTIVE->label());
+            $table->text('table_heading')->default('Double Height Ceilings & <span>18 Feet Tall Windows</span>');
+            $table->text('gallery_heading')->default('Image <span>Gallery</span>');
+            $table->text('specification_heading')->default('Villas With Design Influences From <span>10+ Countries</span>');
+            $table->text('plan_heading')->default('Master & <span>Unit Plans</span>');
+            $table->text('location_heading')->default('Prime <span>Location</span>');
+            $table->text('connectivity_heading')->default('Connectivity <span>At Its Best</span>');
+            $table->text('amenities_heading')->default('20+ Worldclass <span>Amenities</span>');
             $table->timestamps();
             $table->index(['slug', 'id', 'created_at']);
         });

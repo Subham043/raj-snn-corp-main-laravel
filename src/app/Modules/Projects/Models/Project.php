@@ -64,4 +64,9 @@ class Project extends Model
             get: fn () => PublishStatusEnum::getValue($this->userType),
         );
     }
+
+    public function ProjectAbout()
+    {
+        return $this->hasOne('App\Modules\Projects\Models\ProjectAbout', 'project_id');
+    }
 }
