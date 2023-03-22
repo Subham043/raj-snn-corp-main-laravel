@@ -58,7 +58,21 @@ class ProjectService
         ]);
     }
 
+    public function updateHeading(array $value, Project $data) : void
+    {
+        $data->update([
+            ...$value,
+        ]);
+    }
+
     public function update(ProjectUpdateRequest $request, Project $data) : void
+    {
+        $data->update([
+            ...$request->except('header_logo', 'footer_logo', 'og_image'),
+        ]);
+    }
+
+    public function update_image(ProjectUpdateRequest $request, Project $data) : void
     {
         if($request->hasFile('header_logo')){
             $header_logo = (new FileService)->save_file($request, 'header_logo', $this->path);
@@ -81,9 +95,6 @@ class ProjectService
                 'og_image' => $og_image,
             ]);
         }
-        $data->update([
-            ...$request->except('header_logo', 'footer_logo', 'og_image'),
-        ]);
     }
 
     public function delete(Project $data): void
