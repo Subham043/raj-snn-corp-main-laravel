@@ -66,6 +66,9 @@
                                                         <a href="{{route('project_update.get', $item->id)}}" style="background:yellow;color:black;border-color:yellow;" class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                                     </div>
                                                     <div class="edit">
+                                                        <a href="{{route('project_banner.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">Banner Section</a>
+                                                    </div>
+                                                    <div class="edit">
                                                         <a href="{{route('project_about.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">About Section</a>
                                                     </div>
                                                     <div class="edit">

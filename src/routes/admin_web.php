@@ -11,6 +11,7 @@ use App\Modules\Projects\Controllers\ProjectAmenitiesCreateController;
 use App\Modules\Projects\Controllers\ProjectAmenitiesDeleteController;
 use App\Modules\Projects\Controllers\ProjectAmenitiesPaginateController;
 use App\Modules\Projects\Controllers\ProjectAmenitiesUpdateController;
+use App\Modules\Projects\Controllers\ProjectBannerController;
 use App\Modules\Projects\Controllers\ProjectCreateController;
 use App\Modules\Projects\Controllers\ProjectDeleteController;
 use App\Modules\Projects\Controllers\ProjectGalleryCreateController;
@@ -63,6 +64,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update-post/{id}', [ProjectUpdateController::class, 'post', 'as' => 'project_update.post'])->name('project_update.post');
         Route::get('/about/{project_id}', [ProjectAboutController::class, 'get', 'as' => 'project_about.get'])->name('project_about.get');
         Route::post('/about-post/{project_id}', [ProjectAboutController::class, 'post', 'as' => 'project_about.post'])->name('project_about.post');
+        Route::get('/banner/{project_id}', [ProjectBannerController::class, 'get', 'as' => 'project_banner.get'])->name('project_banner.get');
+        Route::post('/banner-post/{project_id}', [ProjectBannerController::class, 'post', 'as' => 'project_banner.post'])->name('project_banner.post');
         Route::get('/location/{project_id}', [ProjectLocationController::class, 'get', 'as' => 'project_location.get'])->name('project_location.get');
         Route::post('/location-post/{project_id}', [ProjectLocationController::class, 'post', 'as' => 'project_location.post'])->name('project_location.post');
         Route::prefix('/heading/{project_id}')->group(function () {

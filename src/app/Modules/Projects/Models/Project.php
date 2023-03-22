@@ -98,4 +98,9 @@ class Project extends Model
     {
         return $this->hasMany('App\Modules\Projects\Models\ProjectSpecification', 'project_id');
     }
+
+    public function ProjectGallery()
+    {
+        return $this->hasMany('App\Modules\Projects\Models\ProjectGallery', 'project_id');
+    }
 }
