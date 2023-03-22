@@ -12,6 +12,10 @@ use App\Modules\Projects\Controllers\ProjectAmenitiesDeleteController;
 use App\Modules\Projects\Controllers\ProjectAmenitiesPaginateController;
 use App\Modules\Projects\Controllers\ProjectAmenitiesUpdateController;
 use App\Modules\Projects\Controllers\ProjectBannerController;
+use App\Modules\Projects\Controllers\ProjectConnectivityCreateController;
+use App\Modules\Projects\Controllers\ProjectConnectivityDeleteController;
+use App\Modules\Projects\Controllers\ProjectConnectivityPaginateController;
+use App\Modules\Projects\Controllers\ProjectConnectivityUpdateController;
 use App\Modules\Projects\Controllers\ProjectCreateController;
 use App\Modules\Projects\Controllers\ProjectDeleteController;
 use App\Modules\Projects\Controllers\ProjectGalleryCreateController;
@@ -79,6 +83,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [ProjectAmenitiesDeleteController::class, 'get', 'as' => 'project_amenities_delete.get'])->name('project_amenities_delete.get');
             Route::get('/update/{id}', [ProjectAmenitiesUpdateController::class, 'get', 'as' => 'project_amenities_update.get'])->name('project_amenities_update.get');
             Route::post('/update-post/{id}', [ProjectAmenitiesUpdateController::class, 'post', 'as' => 'project_amenities_update.post'])->name('project_amenities_update.post');
+
+        });
+        Route::prefix('/connectivity/{project_id}')->group(function () {
+            Route::get('/create', [ProjectConnectivityCreateController::class, 'get', 'as' => 'project_connectivity_create.get'])->name('project_connectivity_create.get');
+            Route::post('/create-post', [ProjectConnectivityCreateController::class, 'post', 'as' => 'project_connectivity_create.post'])->name('project_connectivity_create.post');
+            Route::get('/list', [ProjectConnectivityPaginateController::class, 'get', 'as' => 'project_connectivity_list.get'])->name('project_connectivity_list.get');
+            Route::get('/delete/{id}', [ProjectConnectivityDeleteController::class, 'get', 'as' => 'project_connectivity_delete.get'])->name('project_connectivity_delete.get');
+            Route::get('/update/{id}', [ProjectConnectivityUpdateController::class, 'get', 'as' => 'project_connectivity_update.get'])->name('project_connectivity_update.get');
+            Route::post('/update-post/{id}', [ProjectConnectivityUpdateController::class, 'post', 'as' => 'project_connectivity_update.post'])->name('project_connectivity_update.post');
 
         });
         Route::prefix('/specifications/{project_id}')->group(function () {
