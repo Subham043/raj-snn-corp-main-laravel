@@ -13,6 +13,9 @@ use App\Modules\Projects\Controllers\ProjectAmenitiesPaginateController;
 use App\Modules\Projects\Controllers\ProjectAmenitiesUpdateController;
 use App\Modules\Projects\Controllers\ProjectCreateController;
 use App\Modules\Projects\Controllers\ProjectDeleteController;
+use App\Modules\Projects\Controllers\ProjectGalleryCreateController;
+use App\Modules\Projects\Controllers\ProjectgalleryDeleteController;
+use App\Modules\Projects\Controllers\ProjectGalleryPaginateController;
 use App\Modules\Projects\Controllers\ProjectLocationController;
 use App\Modules\Projects\Controllers\ProjectPaginateController;
 use App\Modules\Projects\Controllers\ProjectSectionHeadingController;
@@ -82,6 +85,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [ProjectSpecificationDeleteController::class, 'get', 'as' => 'project_specification_delete.get'])->name('project_specification_delete.get');
             Route::get('/update/{id}', [ProjectSpecificationUpdateController::class, 'get', 'as' => 'project_specification_update.get'])->name('project_specification_update.get');
             Route::post('/update-post/{id}', [ProjectSpecificationUpdateController::class, 'post', 'as' => 'project_specification_update.post'])->name('project_specification_update.post');
+
+        });
+        Route::prefix('/gaallery/{project_id}')->group(function () {
+            Route::get('/create', [ProjectGalleryCreateController::class, 'get', 'as' => 'project_gallery_create.get'])->name('project_gallery_create.get');
+            Route::post('/create-post', [ProjectGalleryCreateController::class, 'post', 'as' => 'project_gallery_create.post'])->name('project_gallery_create.post');
+            Route::get('/list', [ProjectGalleryPaginateController::class, 'get', 'as' => 'project_gallery_list.get'])->name('project_gallery_list.get');
+            Route::get('/delete/{id}', [ProjectgalleryDeleteController::class, 'get', 'as' => 'project_gallery_delete.get'])->name('project_gallery_delete.get');
 
         });
     });
