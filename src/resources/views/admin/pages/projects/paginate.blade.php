@@ -71,6 +71,9 @@
                                                     <div class="edit">
                                                         <a href="{{route('project_location.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">Location Section</a>
                                                     </div>
+                                                    <div class="edit">
+                                                        <a href="{{route('project_amenities_list.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">Amenities Section</a>
+                                                    </div>
                                                     <div class="remove">
                                                         <button class="btn btn-sm btn-danger remove-item-btn" style="background:red" onclick="deleteHandler('{{route('project_delete.get', $item->id)}}')">Delete</button>
                                                     </div>

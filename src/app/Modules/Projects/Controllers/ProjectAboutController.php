@@ -34,7 +34,7 @@ class ProjectAboutController extends Controller
         try {
             //code...
             $this->projectAboutService->createOrUpdate($request, $project_id);
-            return redirect()->intended(route('project_about.get', $project_id))->with('success_status', 'Project created successfully.');
+            return redirect()->intended(route('project_about.get', $project_id))->with('success_status', 'Project About Details saved successfully.');
         } catch (\Throwable $th) {
             throw $th;
             return redirect(route('project_about.get', $project_id))->with('error_status', 'Oops! Something went wrong. Please try again!');

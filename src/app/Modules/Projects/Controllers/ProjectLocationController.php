@@ -36,7 +36,7 @@ class ProjectLocationController extends Controller
             //code...
             $this->projectLocationService->createOrUpdate($request, $project_id);
             $this->projectService->updateHeading($request->only('location_heading'), $project);
-            return redirect()->intended(route('project_location.get', $project_id))->with('success_status', 'Project created successfully.');
+            return redirect()->intended(route('project_location.get', $project_id))->with('success_status', 'Project Location Details saved successfully.');
         } catch (\Throwable $th) {
             throw $th;
             return redirect(route('project_location.get', $project_id))->with('error_status', 'Oops! Something went wrong. Please try again!');

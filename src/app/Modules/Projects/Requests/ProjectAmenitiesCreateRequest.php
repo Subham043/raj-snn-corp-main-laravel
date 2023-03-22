@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 
 
-class ProjectAboutRequest extends FormRequest
+class ProjectAmenitiesCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,10 +27,8 @@ class ProjectAboutRequest extends FormRequest
     public function rules()
     {
         return [
-            'rera' => 'required|string|max:500',
-            'description' => 'required|string',
-            'left_image' => 'required|image|mimes:jpeg,png,jpg,webp,avif',
-            'about_logo' => 'required|image|mimes:jpeg,png,jpg,webp,avif',
+            'title' => 'required|string|max:500',
+            'icon_image' => 'required|image|mimes:jpeg,png,jpg,webp,avif',
         ];
     }
 
@@ -42,9 +40,8 @@ class ProjectAboutRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'rera' => 'Rera Number',
-            'left_image' => 'Left Image',
-            'about_logo' => 'About Logo',
+            'title' => 'Title',
+            'icon_image' => 'Icon Image',
         ];
     }
 

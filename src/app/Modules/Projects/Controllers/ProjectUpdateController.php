@@ -30,7 +30,7 @@ class ProjectUpdateController extends Controller
             //code...
             $this->projectService->update_image($request, $data);
             $this->projectService->update($request, $data);
-            return redirect()->intended(route('project_update.get', $id))->with('success_status', 'Project created successfully.');
+            return redirect()->intended(route('project_update.get', $id))->with('success_status', 'Project updated successfully.');
         } catch (\Throwable $th) {
             throw $th;
             return redirect(route('project_update.get', $id))->with('error_status', 'Oops! Something went wrong. Please try again!');
