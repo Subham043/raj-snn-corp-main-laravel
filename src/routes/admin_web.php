@@ -15,6 +15,7 @@ use App\Modules\Projects\Controllers\ProjectCreateController;
 use App\Modules\Projects\Controllers\ProjectDeleteController;
 use App\Modules\Projects\Controllers\ProjectLocationController;
 use App\Modules\Projects\Controllers\ProjectPaginateController;
+use App\Modules\Projects\Controllers\ProjectSectionHeadingController;
 use App\Modules\Projects\Controllers\ProjectUpdateController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +58,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/about-post/{project_id}', [ProjectAboutController::class, 'post', 'as' => 'project_about.post'])->name('project_about.post');
         Route::get('/location/{project_id}', [ProjectLocationController::class, 'get', 'as' => 'project_location.get'])->name('project_location.get');
         Route::post('/location-post/{project_id}', [ProjectLocationController::class, 'post', 'as' => 'project_location.post'])->name('project_location.post');
+        Route::prefix('/heading/{project_id}')->group(function () {
+            Route::post('/', [ProjectSectionHeadingController::class, 'post', 'as' => 'project_heading.post'])->name('project_heading.post');
+
+        });
         Route::prefix('/amenities/{project_id}')->group(function () {
             Route::get('/create', [ProjectAmenitiesCreateController::class, 'get', 'as' => 'project_amenities_create.get'])->name('project_amenities_create.get');
             Route::post('/create-post', [ProjectAmenitiesCreateController::class, 'post', 'as' => 'project_amenities_create.post'])->name('project_amenities_create.post');
