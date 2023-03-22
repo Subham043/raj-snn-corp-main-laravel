@@ -88,4 +88,14 @@ class Project extends Model
     {
         return $this->hasOne('App\Modules\Projects\Models\ProjectLocation', 'project_id');
     }
+
+    public function ProjectAmenities()
+    {
+        return $this->hasMany('App\Modules\Projects\Models\ProjectAmenities', 'project_id');
+    }
+
+    public function ProjectSpecification()
+    {
+        return $this->hasMany('App\Modules\Projects\Models\ProjectSpecification', 'project_id');
+    }
 }

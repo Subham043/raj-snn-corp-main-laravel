@@ -7,29 +7,29 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_amenities_list.get', $data->project_id), 'list'=>['Amenities', 'Update']])
+        @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_specification_list.get', $project_id), 'list'=>['Specification', 'Create']])
         <!-- end page title -->
 
         <div class="row">
-            @include('admin.includes.back_button', ['link'=>route('project_amenities_list.get', $data->project_id)])
+            @include('admin.includes.back_button', ['link'=>route('project_specification_list.get', $project_id)])
             <div class="col-lg-12">
-                <form id="countryForm" method="post" action="{{route('project_amenities_update.post', [$project_id, $data->id])}}" enctype="multipart/form-data">
+                <form id="countryForm" method="post" action="{{route('project_specification_create.post', $project_id)}}" enctype="multipart/form-data">
                 @csrf
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Project Amenities Detail</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Project Specification Detail</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>$data->title])
+                                        @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>old('title')])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'icon_image', 'label'=>'Icon Image'])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Create</button>
                                     </div>
 
 
@@ -80,7 +80,7 @@ validation
   .addField('#icon_image', [
     {
         rule: 'minFilesCount',
-        value: 0,
+        value: 1,
         errorMessage: 'Please select a icon image',
     },
     {

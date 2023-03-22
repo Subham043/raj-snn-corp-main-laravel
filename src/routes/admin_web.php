@@ -16,6 +16,10 @@ use App\Modules\Projects\Controllers\ProjectDeleteController;
 use App\Modules\Projects\Controllers\ProjectLocationController;
 use App\Modules\Projects\Controllers\ProjectPaginateController;
 use App\Modules\Projects\Controllers\ProjectSectionHeadingController;
+use App\Modules\Projects\Controllers\ProjectSpecificationCreateController;
+use App\Modules\Projects\Controllers\ProjectSpecificationDeleteController;
+use App\Modules\Projects\Controllers\ProjectSpecificationPaginateController;
+use App\Modules\Projects\Controllers\ProjectSpecificationUpdateController;
 use App\Modules\Projects\Controllers\ProjectUpdateController;
 use Illuminate\Support\Facades\Route;
 
@@ -69,6 +73,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [ProjectAmenitiesDeleteController::class, 'get', 'as' => 'project_amenities_delete.get'])->name('project_amenities_delete.get');
             Route::get('/update/{id}', [ProjectAmenitiesUpdateController::class, 'get', 'as' => 'project_amenities_update.get'])->name('project_amenities_update.get');
             Route::post('/update-post/{id}', [ProjectAmenitiesUpdateController::class, 'post', 'as' => 'project_amenities_update.post'])->name('project_amenities_update.post');
+
+        });
+        Route::prefix('/specifications/{project_id}')->group(function () {
+            Route::get('/create', [ProjectSpecificationCreateController::class, 'get', 'as' => 'project_specification_create.get'])->name('project_specification_create.get');
+            Route::post('/create-post', [ProjectSpecificationCreateController::class, 'post', 'as' => 'project_specification_create.post'])->name('project_specification_create.post');
+            Route::get('/list', [ProjectSpecificationPaginateController::class, 'get', 'as' => 'project_specification_list.get'])->name('project_specification_list.get');
+            Route::get('/delete/{id}', [ProjectSpecificationDeleteController::class, 'get', 'as' => 'project_specification_delete.get'])->name('project_specification_delete.get');
+            Route::get('/update/{id}', [ProjectSpecificationUpdateController::class, 'get', 'as' => 'project_specification_update.get'])->name('project_specification_update.get');
+            Route::post('/update-post/{id}', [ProjectSpecificationUpdateController::class, 'post', 'as' => 'project_specification_update.post'])->name('project_specification_update.post');
 
         });
     });

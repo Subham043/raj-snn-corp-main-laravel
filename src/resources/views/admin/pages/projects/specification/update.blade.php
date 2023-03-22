@@ -7,17 +7,17 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_amenities_list.get', $data->project_id), 'list'=>['Amenities', 'Update']])
+        @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_specification_list.get', $data->project_id), 'list'=>['Specification', 'Update']])
         <!-- end page title -->
 
         <div class="row">
-            @include('admin.includes.back_button', ['link'=>route('project_amenities_list.get', $data->project_id)])
+            @include('admin.includes.back_button', ['link'=>route('project_specification_list.get', $data->project_id)])
             <div class="col-lg-12">
-                <form id="countryForm" method="post" action="{{route('project_amenities_update.post', [$project_id, $data->id])}}" enctype="multipart/form-data">
+                <form id="countryForm" method="post" action="{{route('project_specification_update.post', [$project_id, $data->id])}}" enctype="multipart/form-data">
                 @csrf
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Project Amenities Detail</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Project Specification Detail</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
