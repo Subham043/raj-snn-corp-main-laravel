@@ -2,12 +2,14 @@
 
 namespace App\Modules\Projects\Services;
 
+use App\Http\Services\FileService;
 use App\Modules\Projects\Models\ProjectLocation;
 use App\Modules\Projects\Requests\ProjectLocationRequest;
 
 class ProjectLocationService
 {
     private $projectLocationModel;
+    private $path = 'public/upload/projects_location';
 
     public function __construct(ProjectLocation $projectLocationModel)
     {
@@ -26,9 +28,11 @@ class ProjectLocationService
 
     public function createOrUpdate(ProjectLocationRequest $request, Int $project_id) : void
     {
+        $map_image = (new FileService)->save_file($request, 'map_image', $this->path);
         $this->projectLocationModel->updateOrCreate(
             [
-                ...$request->except('location_heading'),
+                ...$request->except('location_heading', 'map_image'),
+                'map_image' => $map_image,
             ],
             ['project_id' => $project_id]
         );

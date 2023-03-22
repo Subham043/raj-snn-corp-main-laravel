@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('description');
             $table->text('location');
+            $table->text('map_image');
             $table->foreignId('project_id')->nullable()->constrained('projects')->nullOnDelete();
             $table->timestamps();
             $table->index(['project_id', 'id', 'created_at']);

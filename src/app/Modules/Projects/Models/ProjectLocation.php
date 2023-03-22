@@ -19,6 +19,7 @@ class ProjectLocation extends Model
     protected $fillable = [
         'location',
         'description',
+        'map_image',
         'project_id',
     ];
 

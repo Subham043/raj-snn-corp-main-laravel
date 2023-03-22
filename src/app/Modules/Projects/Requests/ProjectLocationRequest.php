@@ -30,6 +30,7 @@ class ProjectLocationRequest extends FormRequest
             'location_heading' => 'required|string',
             'description' => 'required|string',
             'location' => 'required|url',
+            'map_image' => 'required|image|mimes:jpeg,png,jpg,webp,avif',
         ];
     }
 
@@ -42,6 +43,7 @@ class ProjectLocationRequest extends FormRequest
     {
         return [
             'location_heading' => 'Heading',
+            'map_image' => 'Map Image',
         ];
     }
 

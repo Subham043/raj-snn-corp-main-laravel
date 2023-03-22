@@ -41,6 +41,9 @@
                                         @include('admin.includes.input', ['key'=>'location', 'label'=>'Location', 'value'=>!empty($data) ? $data->location : old('location')])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
+                                        @include('admin.includes.file_input', ['key'=>'map_image', 'label'=>'Map Image'])
+                                    </div>
+                                    <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>!empty($data) ? $data->description : old('description')])
                                     </div>
 
@@ -109,6 +112,22 @@ validation
     {
       rule: 'required',
       errorMessage: 'Description is required',
+    },
+  ])
+  .addField('#map_image', [
+    {
+        rule: 'minFilesCount',
+        value: 1,
+        errorMessage: 'Please select a banner image',
+    },
+    {
+        rule: 'files',
+        value: {
+            files: {
+                extensions: ['jpeg', 'png', 'jpg', 'webp', 'avif',]
+            },
+        },
+        errorMessage: 'Please select a valid banner image',
     },
   ])
   .onSuccess(async (event) => {
