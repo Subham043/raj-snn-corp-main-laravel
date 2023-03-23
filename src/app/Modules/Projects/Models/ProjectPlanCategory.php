@@ -25,4 +25,9 @@ class ProjectPlanCategory extends Model
     {
         return $this->belongsTo('App\Modules\Projects\Models\Project', 'project_id')->withDefault();
     }
+
+    public function ProjectPlanImage()
+    {
+        return $this->hasMany('App\Modules\Projects\Models\ProjectPlanImage', 'plan_category_id');
+    }
 }

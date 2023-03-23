@@ -8,7 +8,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_plan_category_list.get', $project_id), 'list'=>['Plan Category', 'List']])
+        @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_list.get'), 'list'=>['Plan Category', 'List']])
         <!-- end page title -->
 
         @include('admin.includes.section_title', ['section'=>'Plan Category', 'link'=>route('project_heading.post', $project_id), 'key' => 'plan_heading', 'heading_value'=>$project['plan_heading']])
@@ -53,6 +53,9 @@
                                                 <div class="d-flex gap-2">
                                                     <div class="edit">
                                                         <a href="{{route('project_plan_category_update.get', [$item->project_id, $item->id])}}" style="background:yellow;color:black;border-color:yellow;" class="btn btn-sm btn-success edit-item-btn">Edit</a>
+                                                    </div>
+                                                    <div class="edit">
+                                                        <a href="{{route('project_plan_image_list.get', [$item->project_id, $item->id])}}" style="background:rgb(0, 72, 255);color:white;border-color:rgb(0, 72, 255);" class="btn btn-sm btn-success edit-item-btn">Plan Images</a>
                                                     </div>
                                                     <div class="remove">
                                                         <button class="btn btn-sm btn-danger remove-item-btn" style="background:red" onclick="deleteHandler('{{route('project_plan_category_delete.get', [$project_id, $item->id])}}')">Delete</button>

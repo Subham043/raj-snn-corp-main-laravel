@@ -7,7 +7,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_specification_list.get', $project_id), 'list'=>['Specification', 'Create']])
+        @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_list.get'), 'list'=>['Specification', 'Create']])
         <!-- end page title -->
 
         <div class="row">

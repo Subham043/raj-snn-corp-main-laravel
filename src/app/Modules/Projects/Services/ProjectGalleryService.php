@@ -9,28 +9,28 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class ProjectGalleryService
 {
-    private $projectSpecificationModel;
+    private $projectGalleryModel;
     private $path = 'public/upload/projects_gallery';
 
-    public function __construct(ProjectGallery $projectSpecificationModel)
+    public function __construct(ProjectGallery $projectGalleryModel)
     {
-        $this->projectSpecificationModel = $projectSpecificationModel;
+        $this->projectGalleryModel = $projectGalleryModel;
     }
 
     public function getById(Int $id): ProjectGallery
     {
-        return $this->projectSpecificationModel->findOrFail($id);
+        return $this->projectGalleryModel->findOrFail($id);
     }
 
     public function paginate(Int $limit = 10, Int $project_id): LengthAwarePaginator
     {
-        return $this->projectSpecificationModel->where('project_id', $project_id)->orderBy('id', 'DESC')->paginate($limit);
+        return $this->projectGalleryModel->where('project_id', $project_id)->orderBy('id', 'DESC')->paginate($limit);
     }
 
     public function create(ProjectGalleryCreateRequest $request, Int $project_id): void
     {
         $image = (new FileService)->save_file($request, 'image', $this->path);
-        $this->projectSpecificationModel->create([
+        $this->projectGalleryModel->create([
             'image' => $image,
             'project_id' => $project_id,
         ]);

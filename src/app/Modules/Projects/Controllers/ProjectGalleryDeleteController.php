@@ -3,13 +3,13 @@
 namespace App\Modules\Projects\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Projects\Services\ProjectgalleryService;
+use App\Modules\Projects\Services\ProjectGalleryService;
 
-class ProjectgalleryDeleteController extends Controller
+class ProjectGalleryDeleteController extends Controller
 {
     private $projectGalleryService;
 
-    public function __construct(ProjectgalleryService $projectGalleryService)
+    public function __construct(ProjectGalleryService $projectGalleryService)
     {
         $this->projectGalleryService = $projectGalleryService;
     }
@@ -19,7 +19,7 @@ class ProjectgalleryDeleteController extends Controller
         try {
             //code...
             $this->projectGalleryService->delete($data);
-            return redirect()->intended(route('project_gallery_list.get', $project_id))->with('success_status', 'Project gallery Image deleted successfully.');
+            return redirect()->intended(route('project_gallery_list.get', $project_id))->with('success_status', 'Project Gallery Image deleted successfully.');
         } catch (\Throwable $th) {
             throw $th;
             return redirect(route('project_gallery_list.get', $project_id))->with('error_status', 'Oops! Something went wrong. Please try again!');

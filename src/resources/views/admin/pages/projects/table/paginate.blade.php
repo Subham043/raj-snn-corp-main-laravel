@@ -8,7 +8,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_table_list.get', $project_id), 'list'=>['Table', 'List']])
+        @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_list.get'), 'list'=>['Table', 'List']])
         <!-- end page title -->
 
         @include('admin.includes.section_title', ['section'=>'Table', 'link'=>route('project_heading.post', $project_id), 'key' => 'table_heading', 'heading_value'=>$project['table_heading']])

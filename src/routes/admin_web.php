@@ -27,6 +27,9 @@ use App\Modules\Projects\Controllers\ProjectPlanCategoryCreateController;
 use App\Modules\Projects\Controllers\ProjectPlanCategoryDeleteController;
 use App\Modules\Projects\Controllers\ProjectPlanCategoryPaginateController;
 use App\Modules\Projects\Controllers\ProjectPlanCategoryUpdateController;
+use App\Modules\Projects\Controllers\ProjectPlanImageCreateController;
+use App\Modules\Projects\Controllers\ProjectPlanImageDeleteController;
+use App\Modules\Projects\Controllers\ProjectPlanImagePaginateController;
 use App\Modules\Projects\Controllers\ProjectSectionHeadingController;
 use App\Modules\Projects\Controllers\ProjectSpecificationCreateController;
 use App\Modules\Projects\Controllers\ProjectSpecificationDeleteController;
@@ -110,6 +113,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update/{id}', [ProjectPlanCategoryUpdateController::class, 'get', 'as' => 'project_plan_category_update.get'])->name('project_plan_category_update.get');
             Route::post('/update-post/{id}', [ProjectPlanCategoryUpdateController::class, 'post', 'as' => 'project_plan_category_update.post'])->name('project_plan_category_update.post');
 
+            Route::prefix('/plan-image/{plan_category_id}')->group(function () {
+                Route::get('/create', [ProjectPlanImageCreateController::class, 'get', 'as' => 'project_plan_image_create.get'])->name('project_plan_image_create.get');
+                Route::post('/create-post', [ProjectPlanImageCreateController::class, 'post', 'as' => 'project_plan_image_create.post'])->name('project_plan_image_create.post');
+                Route::get('/list', [ProjectPlanImagePaginateController::class, 'get', 'as' => 'project_plan_image_list.get'])->name('project_plan_image_list.get');
+                Route::get('/delete/{id}', [ProjectPlanImageDeleteController::class, 'get', 'as' => 'project_plan_image_delete.get'])->name('project_plan_image_delete.get');
+
+            });
         });
         Route::prefix('/connectivity/{project_id}')->group(function () {
             Route::get('/create', [ProjectConnectivityCreateController::class, 'get', 'as' => 'project_connectivity_create.get'])->name('project_connectivity_create.get');
