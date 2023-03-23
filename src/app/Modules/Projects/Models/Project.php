@@ -81,6 +81,11 @@ class Project extends Model
         );
     }
 
+    public function ProjectBanner()
+    {
+        return $this->hasOne('App\Modules\Projects\Models\ProjectBanner', 'project_id');
+    }
+
     public function ProjectAbout()
     {
         return $this->hasOne('App\Modules\Projects\Models\ProjectAbout', 'project_id');
@@ -94,6 +99,21 @@ class Project extends Model
     public function ProjectAmenities()
     {
         return $this->hasMany('App\Modules\Projects\Models\ProjectAmenities', 'project_id');
+    }
+
+    public function ProjectTable()
+    {
+        return $this->hasMany('App\Modules\Projects\Models\ProjectTable', 'project_id');
+    }
+
+    public function ProjectConnectivity()
+    {
+        return $this->hasMany('App\Modules\Projects\Models\ProjectConnectivity', 'project_id');
+    }
+
+    public function ProjectPlanCategory()
+    {
+        return $this->hasMany('App\Modules\Projects\Models\ProjectPlanCategory', 'project_id');
     }
 
     public function ProjectSpecification()

@@ -7,26 +7,23 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_table_list.get', $data->project_id), 'list'=>['Table', 'Update']])
+        @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_plan_category_list.get', $data->project_id), 'list'=>['Plan Category', 'Update']])
         <!-- end page title -->
 
         <div class="row">
-            @include('admin.includes.back_button', ['link'=>route('project_table_list.get', $data->project_id)])
+            @include('admin.includes.back_button', ['link'=>route('project_plan_category_list.get', $data->project_id)])
             <div class="col-lg-12">
-                <form id="countryForm" method="post" action="{{route('project_table_update.post', [$project_id, $data->id])}}" enctype="multipart/form-data">
+                <form id="countryForm" method="post" action="{{route('project_plan_category_update.post', [$project_id, $data->id])}}" enctype="multipart/form-data">
                 @csrf
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Project Table Detail</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Project Plan Category Detail</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'unit', 'label'=>'Unit', 'value'=>$data->unit])
-                                    </div>
-                                    <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'type', 'label'=>'Type', 'value'=>$data->type])
+                                    <div class="col-xxl-12 col-md-12">
+                                        @include('admin.includes.input', ['key'=>'name', 'label'=>'Category Name', 'value'=>$data->name])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>
@@ -66,26 +63,15 @@ const validation = new JustValidate('#countryForm', {
 });
 // apply rules to form fields
 validation
-  .addField('#unit', [
+  .addField('#name', [
     {
       rule: 'required',
-      errorMessage: 'Unit is required',
+      errorMessage: 'Category is required',
     },
     {
         rule: 'customRegexp',
         value: COMMON_REGEX,
-        errorMessage: 'Unit is invalid',
-    },
-  ])
-  .addField('#type', [
-    {
-      rule: 'required',
-      errorMessage: 'Type is required',
-    },
-    {
-        rule: 'customRegexp',
-        value: COMMON_REGEX,
-        errorMessage: 'Type is invalid',
+        errorMessage: 'Category is invalid',
     },
   ])
   .onSuccess(async (event) => {

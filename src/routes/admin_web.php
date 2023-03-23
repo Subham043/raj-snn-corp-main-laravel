@@ -23,6 +23,10 @@ use App\Modules\Projects\Controllers\ProjectgalleryDeleteController;
 use App\Modules\Projects\Controllers\ProjectGalleryPaginateController;
 use App\Modules\Projects\Controllers\ProjectLocationController;
 use App\Modules\Projects\Controllers\ProjectPaginateController;
+use App\Modules\Projects\Controllers\ProjectPlanCategoryCreateController;
+use App\Modules\Projects\Controllers\ProjectPlanCategoryDeleteController;
+use App\Modules\Projects\Controllers\ProjectPlanCategoryPaginateController;
+use App\Modules\Projects\Controllers\ProjectPlanCategoryUpdateController;
 use App\Modules\Projects\Controllers\ProjectSectionHeadingController;
 use App\Modules\Projects\Controllers\ProjectSpecificationCreateController;
 use App\Modules\Projects\Controllers\ProjectSpecificationDeleteController;
@@ -96,6 +100,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [ProjectTableDeleteController::class, 'get', 'as' => 'project_table_delete.get'])->name('project_table_delete.get');
             Route::get('/update/{id}', [ProjectTableUpdateController::class, 'get', 'as' => 'project_table_update.get'])->name('project_table_update.get');
             Route::post('/update-post/{id}', [ProjectTableUpdateController::class, 'post', 'as' => 'project_table_update.post'])->name('project_table_update.post');
+
+        });
+        Route::prefix('/plan-category/{project_id}')->group(function () {
+            Route::get('/create', [ProjectPlanCategoryCreateController::class, 'get', 'as' => 'project_plan_category_create.get'])->name('project_plan_category_create.get');
+            Route::post('/create-post', [ProjectPlanCategoryCreateController::class, 'post', 'as' => 'project_plan_category_create.post'])->name('project_plan_category_create.post');
+            Route::get('/list', [ProjectPlanCategoryPaginateController::class, 'get', 'as' => 'project_plan_category_list.get'])->name('project_plan_category_list.get');
+            Route::get('/delete/{id}', [ProjectPlanCategoryDeleteController::class, 'get', 'as' => 'project_plan_category_delete.get'])->name('project_plan_category_delete.get');
+            Route::get('/update/{id}', [ProjectPlanCategoryUpdateController::class, 'get', 'as' => 'project_plan_category_update.get'])->name('project_plan_category_update.get');
+            Route::post('/update-post/{id}', [ProjectPlanCategoryUpdateController::class, 'post', 'as' => 'project_plan_category_update.post'])->name('project_plan_category_update.post');
 
         });
         Route::prefix('/connectivity/{project_id}')->group(function () {
