@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/profile';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -26,17 +26,31 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        $this->routes(function () {
-            Route::middleware('api')
-                ->prefix('api')
-                ->group(base_path('routes/api.php'));
+        $this->routes(function (Request $request) {
+            $host = $request->getHost();
+            $host_array = explode(".",$host);
+            // dd($host_array);
+            // Route::middleware('api')
+            //     ->prefix('api')
+            //     ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')
-                ->group(base_path('routes/web.php'));
+            // Route::middleware('web')
+            //     ->prefix('admin')
+            //     ->group(base_path('routes/admin_web.php'));
 
-            Route::middleware('web')
-                ->prefix('admin')
-                ->group(base_path('routes/admin_web.php'));
+            if(count($host_array)==2){
+                Route::middleware('web')
+                    ->group(base_path('routes/web.php'));
+            }
+
+            if(count($host_array)==3 && $host_array[0]=='api'){
+                Route::domain($host)->middleware('api')->group(base_path('routes/api.php'));
+            }
+
+            if(count($host_array)==3 && $host_array[0]=='admin'){
+                Route::domain($host)->middleware('web')->group(base_path('routes/admin_web.php'));
+            }
+
         });
     }
 
