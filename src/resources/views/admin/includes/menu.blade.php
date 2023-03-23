@@ -33,12 +33,12 @@
                         </div>
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="menu-title"><span data-key="t-menu">Menu</span></li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link menu-link {{strpos(url()->current(),'enquiry') !== false ? 'active' : ''}}" href="{{route('enquiry_view')}}">
-                                    <i class="ri-message-fill"></i> <span data-key="t-widgets">Enquiries</span>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('project_list.get')) !== false ? 'active' : ''}}" href="{{route('project_list.get')}}">
+                                    <i class="ri-message-fill"></i> <span data-key="t-widgets">Projects</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'admin/image') !== false || strpos(url()->current(),'admin/audio') !== false || strpos(url()->current(),'admin/video') !== false || strpos(url()->current(),'admin/document') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'admin/image') !== false || strpos(url()->current(),'admin/audio') !== false || strpos(url()->current(),'admin/video') !== false || strpos(url()->current(),'admin/document') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">
                                     <i class="ri-image-fill"></i> <span data-key="t-dashboards">Media Content</span>

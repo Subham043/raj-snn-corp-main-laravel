@@ -73,7 +73,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('/project')->group(function () {
         Route::get('/create', [ProjectCreateController::class, 'get', 'as' => 'project_create.get'])->name('project_create.get');
         Route::post('/create-post', [ProjectCreateController::class, 'post', 'as' => 'project_create.post'])->name('project_create.post');
-        Route::get('/list', [ProjectPaginateController::class, 'get', 'as' => 'project_list.get'])->name('project_list.get');
+        Route::get('/', [ProjectPaginateController::class, 'get', 'as' => 'project_list.get'])->name('project_list.get');
         Route::get('/delete/{id}', [ProjectDeleteController::class, 'get', 'as' => 'project_delete.get'])->name('project_delete.get');
         Route::get('/update/{id}', [ProjectUpdateController::class, 'get', 'as' => 'project_update.get'])->name('project_update.get');
         Route::post('/update-post/{id}', [ProjectUpdateController::class, 'post', 'as' => 'project_update.post'])->name('project_update.post');
@@ -90,7 +90,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/amenities/{project_id}')->group(function () {
             Route::get('/create', [ProjectAmenitiesCreateController::class, 'get', 'as' => 'project_amenities_create.get'])->name('project_amenities_create.get');
             Route::post('/create-post', [ProjectAmenitiesCreateController::class, 'post', 'as' => 'project_amenities_create.post'])->name('project_amenities_create.post');
-            Route::get('/list', [ProjectAmenitiesPaginateController::class, 'get', 'as' => 'project_amenities_list.get'])->name('project_amenities_list.get');
+            Route::get('/', [ProjectAmenitiesPaginateController::class, 'get', 'as' => 'project_amenities_list.get'])->name('project_amenities_list.get');
             Route::get('/delete/{id}', [ProjectAmenitiesDeleteController::class, 'get', 'as' => 'project_amenities_delete.get'])->name('project_amenities_delete.get');
             Route::get('/update/{id}', [ProjectAmenitiesUpdateController::class, 'get', 'as' => 'project_amenities_update.get'])->name('project_amenities_update.get');
             Route::post('/update-post/{id}', [ProjectAmenitiesUpdateController::class, 'post', 'as' => 'project_amenities_update.post'])->name('project_amenities_update.post');
@@ -99,7 +99,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/table/{project_id}')->group(function () {
             Route::get('/create', [ProjectTableCreateController::class, 'get', 'as' => 'project_table_create.get'])->name('project_table_create.get');
             Route::post('/create-post', [ProjectTableCreateController::class, 'post', 'as' => 'project_table_create.post'])->name('project_table_create.post');
-            Route::get('/list', [ProjectTablePaginateController::class, 'get', 'as' => 'project_table_list.get'])->name('project_table_list.get');
+            Route::get('/', [ProjectTablePaginateController::class, 'get', 'as' => 'project_table_list.get'])->name('project_table_list.get');
             Route::get('/delete/{id}', [ProjectTableDeleteController::class, 'get', 'as' => 'project_table_delete.get'])->name('project_table_delete.get');
             Route::get('/update/{id}', [ProjectTableUpdateController::class, 'get', 'as' => 'project_table_update.get'])->name('project_table_update.get');
             Route::post('/update-post/{id}', [ProjectTableUpdateController::class, 'post', 'as' => 'project_table_update.post'])->name('project_table_update.post');
@@ -108,7 +108,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/plan-category/{project_id}')->group(function () {
             Route::get('/create', [ProjectPlanCategoryCreateController::class, 'get', 'as' => 'project_plan_category_create.get'])->name('project_plan_category_create.get');
             Route::post('/create-post', [ProjectPlanCategoryCreateController::class, 'post', 'as' => 'project_plan_category_create.post'])->name('project_plan_category_create.post');
-            Route::get('/list', [ProjectPlanCategoryPaginateController::class, 'get', 'as' => 'project_plan_category_list.get'])->name('project_plan_category_list.get');
+            Route::get('/', [ProjectPlanCategoryPaginateController::class, 'get', 'as' => 'project_plan_category_list.get'])->name('project_plan_category_list.get');
             Route::get('/delete/{id}', [ProjectPlanCategoryDeleteController::class, 'get', 'as' => 'project_plan_category_delete.get'])->name('project_plan_category_delete.get');
             Route::get('/update/{id}', [ProjectPlanCategoryUpdateController::class, 'get', 'as' => 'project_plan_category_update.get'])->name('project_plan_category_update.get');
             Route::post('/update-post/{id}', [ProjectPlanCategoryUpdateController::class, 'post', 'as' => 'project_plan_category_update.post'])->name('project_plan_category_update.post');
@@ -116,7 +116,7 @@ Route::middleware(['auth'])->group(function () {
             Route::prefix('/plan-image/{plan_category_id}')->group(function () {
                 Route::get('/create', [ProjectPlanImageCreateController::class, 'get', 'as' => 'project_plan_image_create.get'])->name('project_plan_image_create.get');
                 Route::post('/create-post', [ProjectPlanImageCreateController::class, 'post', 'as' => 'project_plan_image_create.post'])->name('project_plan_image_create.post');
-                Route::get('/list', [ProjectPlanImagePaginateController::class, 'get', 'as' => 'project_plan_image_list.get'])->name('project_plan_image_list.get');
+                Route::get('/', [ProjectPlanImagePaginateController::class, 'get', 'as' => 'project_plan_image_list.get'])->name('project_plan_image_list.get');
                 Route::get('/delete/{id}', [ProjectPlanImageDeleteController::class, 'get', 'as' => 'project_plan_image_delete.get'])->name('project_plan_image_delete.get');
 
             });
@@ -124,7 +124,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/connectivity/{project_id}')->group(function () {
             Route::get('/create', [ProjectConnectivityCreateController::class, 'get', 'as' => 'project_connectivity_create.get'])->name('project_connectivity_create.get');
             Route::post('/create-post', [ProjectConnectivityCreateController::class, 'post', 'as' => 'project_connectivity_create.post'])->name('project_connectivity_create.post');
-            Route::get('/list', [ProjectConnectivityPaginateController::class, 'get', 'as' => 'project_connectivity_list.get'])->name('project_connectivity_list.get');
+            Route::get('/', [ProjectConnectivityPaginateController::class, 'get', 'as' => 'project_connectivity_list.get'])->name('project_connectivity_list.get');
             Route::get('/delete/{id}', [ProjectConnectivityDeleteController::class, 'get', 'as' => 'project_connectivity_delete.get'])->name('project_connectivity_delete.get');
             Route::get('/update/{id}', [ProjectConnectivityUpdateController::class, 'get', 'as' => 'project_connectivity_update.get'])->name('project_connectivity_update.get');
             Route::post('/update-post/{id}', [ProjectConnectivityUpdateController::class, 'post', 'as' => 'project_connectivity_update.post'])->name('project_connectivity_update.post');
@@ -133,7 +133,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/specifications/{project_id}')->group(function () {
             Route::get('/create', [ProjectSpecificationCreateController::class, 'get', 'as' => 'project_specification_create.get'])->name('project_specification_create.get');
             Route::post('/create-post', [ProjectSpecificationCreateController::class, 'post', 'as' => 'project_specification_create.post'])->name('project_specification_create.post');
-            Route::get('/list', [ProjectSpecificationPaginateController::class, 'get', 'as' => 'project_specification_list.get'])->name('project_specification_list.get');
+            Route::get('/', [ProjectSpecificationPaginateController::class, 'get', 'as' => 'project_specification_list.get'])->name('project_specification_list.get');
             Route::get('/delete/{id}', [ProjectSpecificationDeleteController::class, 'get', 'as' => 'project_specification_delete.get'])->name('project_specification_delete.get');
             Route::get('/update/{id}', [ProjectSpecificationUpdateController::class, 'get', 'as' => 'project_specification_update.get'])->name('project_specification_update.get');
             Route::post('/update-post/{id}', [ProjectSpecificationUpdateController::class, 'post', 'as' => 'project_specification_update.post'])->name('project_specification_update.post');
@@ -142,7 +142,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/gaallery/{project_id}')->group(function () {
             Route::get('/create', [ProjectGalleryCreateController::class, 'get', 'as' => 'project_gallery_create.get'])->name('project_gallery_create.get');
             Route::post('/create-post', [ProjectGalleryCreateController::class, 'post', 'as' => 'project_gallery_create.post'])->name('project_gallery_create.post');
-            Route::get('/list', [ProjectGalleryPaginateController::class, 'get', 'as' => 'project_gallery_list.get'])->name('project_gallery_list.get');
+            Route::get('/', [ProjectGalleryPaginateController::class, 'get', 'as' => 'project_gallery_list.get'])->name('project_gallery_list.get');
             Route::get('/delete/{id}', [ProjectgalleryDeleteController::class, 'get', 'as' => 'project_gallery_delete.get'])->name('project_gallery_delete.get');
 
         });
