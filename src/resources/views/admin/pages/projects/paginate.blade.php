@@ -72,6 +72,9 @@
                                                         <a href="{{route('project_about.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">About Section</a>
                                                     </div>
                                                     <div class="edit">
+                                                        <a href="{{route('project_table_list.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">Table Section</a>
+                                                    </div>
+                                                    <div class="edit">
                                                         <a href="{{route('project_gallery_list.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">Gallery Section</a>
                                                     </div>
                                                     <div class="edit">

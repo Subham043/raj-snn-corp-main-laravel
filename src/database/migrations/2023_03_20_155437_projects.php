@@ -44,6 +44,7 @@ return new class extends Migration
             $table->text('location_heading')->default('Prime <span>Location</span>');
             $table->text('connectivity_heading')->default('Connectivity <span>At Its Best</span>');
             $table->text('amenities_heading')->default('20+ Worldclass <span>Amenities</span>');
+            $table->text('table_main_heading')->default('Raj Viviente by SNN Raj Corp <bt/>Luxury 4BHK Villas Off Bannerghatta Rd');
             $table->timestamps();
             $table->index(['slug', 'id', 'created_at']);
         });

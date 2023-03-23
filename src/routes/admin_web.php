@@ -28,6 +28,10 @@ use App\Modules\Projects\Controllers\ProjectSpecificationCreateController;
 use App\Modules\Projects\Controllers\ProjectSpecificationDeleteController;
 use App\Modules\Projects\Controllers\ProjectSpecificationPaginateController;
 use App\Modules\Projects\Controllers\ProjectSpecificationUpdateController;
+use App\Modules\Projects\Controllers\ProjectTableCreateController;
+use App\Modules\Projects\Controllers\ProjectTableDeleteController;
+use App\Modules\Projects\Controllers\ProjectTablePaginateController;
+use App\Modules\Projects\Controllers\ProjectTableUpdateController;
 use App\Modules\Projects\Controllers\ProjectUpdateController;
 use Illuminate\Support\Facades\Route;
 
@@ -83,6 +87,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [ProjectAmenitiesDeleteController::class, 'get', 'as' => 'project_amenities_delete.get'])->name('project_amenities_delete.get');
             Route::get('/update/{id}', [ProjectAmenitiesUpdateController::class, 'get', 'as' => 'project_amenities_update.get'])->name('project_amenities_update.get');
             Route::post('/update-post/{id}', [ProjectAmenitiesUpdateController::class, 'post', 'as' => 'project_amenities_update.post'])->name('project_amenities_update.post');
+
+        });
+        Route::prefix('/table/{project_id}')->group(function () {
+            Route::get('/create', [ProjectTableCreateController::class, 'get', 'as' => 'project_table_create.get'])->name('project_table_create.get');
+            Route::post('/create-post', [ProjectTableCreateController::class, 'post', 'as' => 'project_table_create.post'])->name('project_table_create.post');
+            Route::get('/list', [ProjectTablePaginateController::class, 'get', 'as' => 'project_table_list.get'])->name('project_table_list.get');
+            Route::get('/delete/{id}', [ProjectTableDeleteController::class, 'get', 'as' => 'project_table_delete.get'])->name('project_table_delete.get');
+            Route::get('/update/{id}', [ProjectTableUpdateController::class, 'get', 'as' => 'project_table_update.get'])->name('project_table_update.get');
+            Route::post('/update-post/{id}', [ProjectTableUpdateController::class, 'post', 'as' => 'project_table_update.post'])->name('project_table_update.post');
 
         });
         Route::prefix('/connectivity/{project_id}')->group(function () {
