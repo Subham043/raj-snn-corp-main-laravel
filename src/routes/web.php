@@ -1,6 +1,6 @@
 <?php
 
-use App\Modules\Authentication\Controllers\LoginController;
+use App\Modules\Projects\Controllers\Main\ProjectViewMainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/project', [ProjectViewMainController::class, 'get', 'as' => 'project_view_main.get'])->name('project_view_main.get');
