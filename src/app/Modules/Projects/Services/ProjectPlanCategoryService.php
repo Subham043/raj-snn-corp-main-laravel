@@ -34,7 +34,7 @@ class ProjectPlanCategoryService
     public function create(ProjectPlanCategoryRequest $request, Int $project_id): void
     {
         $this->projectPlanCategoryModel->create([
-            ...$request->validated(),
+            ...$request->all(),
             'project_id' => $project_id
         ]);
     }
@@ -42,7 +42,7 @@ class ProjectPlanCategoryService
     public function update(ProjectPlanCategoryRequest $request, ProjectPlanCategory $data) : void
     {
         $data->update([
-            ...$request->validated(),
+            ...$request->all(),
         ]);
     }
 

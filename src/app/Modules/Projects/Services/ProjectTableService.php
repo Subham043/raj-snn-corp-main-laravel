@@ -34,7 +34,7 @@ class ProjectTableService
     public function create(ProjectTableRequest $request, Int $project_id): void
     {
         $this->projectTableModel->create([
-            ...$request->validated(),
+            ...$request->all(),
             'project_id' => $project_id
         ]);
     }
@@ -42,7 +42,7 @@ class ProjectTableService
     public function update(ProjectTableRequest $request, ProjectTable $data) : void
     {
         $data->update([
-            ...$request->validated(),
+            ...$request->all(),
         ]);
     }
 

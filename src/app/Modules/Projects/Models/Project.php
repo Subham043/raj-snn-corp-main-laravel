@@ -70,14 +70,14 @@ class Project extends Model
     protected function projectStatusType(): Attribute
     {
         return new Attribute(
-            get: fn () => ProjectStatusEnum::getValue($this->status),
+            get: fn () => ProjectStatusEnum::getValue($this->project_status),
         );
     }
 
     protected function publishStatusType(): Attribute
     {
         return new Attribute(
-            get: fn () => PublishStatusEnum::getValue($this->userType),
+            get: fn () => PublishStatusEnum::getValue($this->project_status),
         );
     }
 

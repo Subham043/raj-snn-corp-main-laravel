@@ -139,11 +139,11 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/update-post/{id}', [ProjectSpecificationUpdateController::class, 'post', 'as' => 'project_specification_update.post'])->name('project_specification_update.post');
 
         });
-        Route::prefix('/gaallery/{project_id}')->group(function () {
+        Route::prefix('/gallery/{project_id}')->group(function () {
             Route::get('/create', [ProjectGalleryCreateController::class, 'get', 'as' => 'project_gallery_create.get'])->name('project_gallery_create.get');
             Route::post('/create-post', [ProjectGalleryCreateController::class, 'post', 'as' => 'project_gallery_create.post'])->name('project_gallery_create.post');
             Route::get('/', [ProjectGalleryPaginateController::class, 'get', 'as' => 'project_gallery_list.get'])->name('project_gallery_list.get');
-            Route::get('/delete/{id}', [ProjectgalleryDeleteController::class, 'get', 'as' => 'project_gallery_delete.get'])->name('project_gallery_delete.get');
+            Route::get('/delete/{id}', [ProjectGalleryDeleteController::class, 'get', 'as' => 'project_gallery_delete.get'])->name('project_gallery_delete.get');
 
         });
     });

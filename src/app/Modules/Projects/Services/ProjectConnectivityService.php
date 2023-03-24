@@ -34,7 +34,7 @@ class ProjectConnectivityService
     public function create(ProjectConnectivityRequest $request, Int $project_id): void
     {
         $this->projectConnectivityModel->create([
-            ...$request->validated(),
+            ...$request->all(),
             'project_id' => $project_id,
         ]);
     }
@@ -42,7 +42,7 @@ class ProjectConnectivityService
     public function update(ProjectConnectivityRequest $request, ProjectConnectivity $data) : void
     {
         $data->update([
-            ...$request->validated(),
+            ...$request->all(),
         ]);
     }
 
