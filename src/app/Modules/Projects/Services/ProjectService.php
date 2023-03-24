@@ -22,7 +22,7 @@ class ProjectService
 
     public function all(): Collection
     {
-        return $this->projectModel->orderBy('id', 'DESC')->all();
+        return $this->projectModel->orderBy('id', 'DESC')->get();
     }
 
     public function paginate(Request $request, Int $limit = 10): LengthAwarePaginator
