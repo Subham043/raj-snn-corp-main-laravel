@@ -4,6 +4,7 @@ namespace App\Modules\Projects\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class ProjectAbout extends Model
 {
@@ -23,6 +24,22 @@ class ProjectAbout extends Model
         'description',
         'project_id',
     ];
+
+    protected $appends = ['about_logo_link', 'left_image_link'];
+
+    protected function aboutLogoLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset('storage/upload/projects_about/'.$this->about_logo),
+        );
+    }
+
+    protected function leftImageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset('storage/upload/projects_about/'.$this->left_image),
+        );
+    }
 
     public function Project()
     {

@@ -4,6 +4,7 @@ namespace App\Modules\Projects\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class ProjectAmenities extends Model
 {
@@ -21,6 +22,15 @@ class ProjectAmenities extends Model
         'icon_image',
         'project_id',
     ];
+
+    protected $appends = ['icon_image_link'];
+
+    protected function iconImageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset('storage/upload/projects_amenities/'.$this->icon_image),
+        );
+    }
 
     public function Project()
     {

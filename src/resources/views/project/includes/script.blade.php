@@ -1,3 +1,6 @@
+<script>
+    {!!$data->meta_footer!!}
+</script>
 <script src="https://kit.fontawesome.com/b6a944420c.js" crossorigin="anonymous"></script>
 <script src="{{ asset('assets/js/jquery.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>

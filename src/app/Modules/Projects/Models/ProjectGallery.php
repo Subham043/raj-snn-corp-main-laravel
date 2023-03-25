@@ -4,6 +4,7 @@ namespace App\Modules\Projects\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class ProjectGallery extends Model
 {
@@ -20,6 +21,15 @@ class ProjectGallery extends Model
         'image',
         'project_id',
     ];
+
+    protected $appends = ['image_link'];
+
+    protected function imageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset('storage/upload/projects_gallery/'.$this->image),
+        );
+    }
 
     public function Project()
     {

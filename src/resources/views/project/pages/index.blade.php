@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include('project.includes.meta')
+@include('project.includes.meta', ['data' => $data])
 
 <body>
-    @include('project.includes.header')
-    @include('project.includes.banner')
-    @include('project.includes.about')
-    @include('project.includes.table')
-    @include('project.includes.gallery')
-    @include('project.includes.specification')
-    @include('project.includes.plan')
-    @include('project.includes.location')
-    @include('project.includes.amenities')
+    @include('project.includes.header', ['data' => $data])
+    @include('project.includes.banner', ['data' => $data])
+    @include('project.includes.about', ['data' => $data])
+    @include('project.includes.table', ['data' => $data])
+    @include('project.includes.gallery', ['data' => $data])
+    @include('project.includes.specification', ['data' => $data])
+    @include('project.includes.plan', ['data' => $data])
+    @include('project.includes.location', ['data' => $data])
+    @include('project.includes.amenities', ['data' => $data])
     <section class="mb-0">
         <div class="contact-holder" id="contact-section">
             <div class="container">
@@ -27,13 +27,13 @@
         </div>
     </section>
     @include('project.includes.creations')
-    @include('project.includes.footer')
+    @include('project.includes.footer', ['data' => $data])
 
 
     <!-- Modal -->
     @include('project.includes.contact_modal')
 </body>
 <!-- Main JS -->
-@include('project.includes.script')
+@include('project.includes.script', ['data' => $data])
 
 </html>

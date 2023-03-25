@@ -14,8 +14,9 @@ class ProjectViewMainController extends Controller
         $this->projectService = $projectService;
     }
 
-    public function get(){
-        return view('project.pages.index');
+    public function get($slug){
+        $data = $this->projectService->getBySlug($slug);
+        return view('project.pages.index')->with('data', $data);
     }
     // public function get(Int $id){
     //     $data = $this->projectService->getById($id);

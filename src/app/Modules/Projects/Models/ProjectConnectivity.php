@@ -4,6 +4,7 @@ namespace App\Modules\Projects\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class ProjectConnectivity extends Model
 {
@@ -21,6 +22,15 @@ class ProjectConnectivity extends Model
         'points',
         'project_id',
     ];
+
+    protected $appends = ['points_list'];
+
+    protected function pointsList(): Attribute
+    {
+        return new Attribute(
+            get: fn () => explode(",",$this->points),
+        );
+    }
 
     public function Project()
     {

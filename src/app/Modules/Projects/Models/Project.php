@@ -65,7 +65,7 @@ class Project extends Model
         'amenities_heading' => '20+ Worldclass <span>Amenities</span>',
     ];
 
-    protected $appends = ['project_status_type', 'publish_status_type'];
+    protected $appends = ['project_status_type', 'publish_status_type', 'header_logo_link', 'footer_logo_link', 'og_image_link'];
 
     protected function projectStatusType(): Attribute
     {
@@ -78,6 +78,27 @@ class Project extends Model
     {
         return new Attribute(
             get: fn () => PublishStatusEnum::getValue($this->project_status),
+        );
+    }
+
+    protected function headerLogoLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset('storage/upload/projects/'.$this->header_logo),
+        );
+    }
+
+    protected function footerLogoLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset('storage/upload/projects/'.$this->footer_logo),
+        );
+    }
+
+    protected function ogImageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => !empty($this->og_image) ? asset('storage/upload/projects/'.$this->og_image): null,
         );
     }
 

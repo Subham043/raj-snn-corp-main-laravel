@@ -4,6 +4,7 @@ namespace App\Modules\Projects\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class ProjectBanner extends Model
 {
@@ -23,6 +24,22 @@ class ProjectBanner extends Model
         'points',
         'project_id',
     ];
+
+    protected $appends = ['banner_image_link', 'points_list'];
+
+    protected function bannerImageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset('storage/upload/projects_banner/'.$this->banner_image),
+        );
+    }
+
+    protected function pointsList(): Attribute
+    {
+        return new Attribute(
+            get: fn () => explode(",",$this->points),
+        );
+    }
 
     public function Project()
     {

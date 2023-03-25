@@ -4,6 +4,7 @@ namespace App\Modules\Projects\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class ProjectPlanImage extends Model
 {
@@ -20,6 +21,15 @@ class ProjectPlanImage extends Model
         'image',
         'plan_category_id',
     ];
+
+    protected $appends = ['image_link'];
+
+    protected function imageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset('storage/upload/projects_plan_image/'.$this->image),
+        );
+    }
 
     public function ProjectPlanCategory()
     {

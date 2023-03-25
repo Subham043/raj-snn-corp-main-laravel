@@ -4,6 +4,7 @@ namespace App\Modules\Projects\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class ProjectLocation extends Model
 {
@@ -22,6 +23,15 @@ class ProjectLocation extends Model
         'map_image',
         'project_id',
     ];
+
+    protected $appends = ['map_image_link'];
+
+    protected function mapImageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset('storage/upload/projects_location/'.$this->map_image),
+        );
+    }
 
     public function Project()
     {

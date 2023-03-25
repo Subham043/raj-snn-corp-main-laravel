@@ -2,6 +2,7 @@
 
 namespace App\Modules\Projects\Services;
 
+use App\Enums\PublishStatusEnum;
 use App\Http\Services\FileService;
 use App\Modules\Projects\Models\Project;
 use App\Modules\Projects\Requests\ProjectCreateRequest;
@@ -42,7 +43,7 @@ class ProjectService
 
     public function getBySlug(String $slug): Project
     {
-        return $this->projectModel->where('slug', $slug)->firstOrFail();
+        return $this->projectModel->with(['ProjectAbout', 'ProjectGallery', 'ProjectAmenities', 'ProjectLocation', 'ProjectTable', 'ProjectPlanCategory.ProjectPlanImage', 'ProjectBanner', 'ProjectConnectivity'])->where('publish_status', PublishStatusEnum::ACTIVE->label())->where('slug', $slug)->firstOrFail();
     }
 
     public function create(ProjectCreateRequest $request): void

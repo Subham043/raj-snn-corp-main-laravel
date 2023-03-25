@@ -1,22 +1,26 @@
 <footer>
     <div class="main-footer">
         <div class="container">
-            <img src="{{ asset('assets/images//white-main-logo.png')}}" alt="">
+            <img src="{{$data->footer_logo_link}}" alt="">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-12 footer-col">
                     <ul>
+                        @if($data->email)
                         <li>
-                            <a href="mailto:enquiry@snnrajcorp.com"><i class="fas fa-envelope"></i>
-                                enquiry@snnrajcorp.com</a>
+                            <a href="mailto:{{$data->email}}"><i class="fas fa-envelope"></i>
+                                {{$data->email}}</a>
                         </li>
+                        @endif
+                        @if($data->phone)
                         <li>
-                            <a href="tel:8095585858"><i class="fas fa-mobile-android-alt"></i> 8095 58 58 58</a>
+                            <a href="tel:{{$data->phone}}"><i class="fas fa-mobile-android-alt"></i> {{$data->phone}}</a>
                         </li>
+                        @endif
+                        @if($data->address)
                         <li>
-                            <a href="#"><i class="fas fa-map-marker-alt"></i> No. 52/8, Golden Pearl Layout, Near
-                                Nice Under Pass, E Main Rd, Eagle Ridge, Ckikkakammana halli, Bengaluru, Karnataka
-                                560083</a>
+                            <a href="#"><i class="fas fa-map-marker-alt"></i> {{$data->address}}</a>
                         </li>
+                        @endif
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 footer-col">
@@ -64,21 +68,29 @@
     <div class="copy-holder">
         <div class="container">
             <div class="row justify-content-between justify-sm-center align-items-center">
-                <p>Copyrights 2023 SNN Raj Corp | All Rights Reserved</p>
+                <p>Copyrights {{date('Y')}} SNN Raj Corp | All Rights Reserved</p>
                 <div class="col-auto d-flex justify-content-between align-items-center footer-icon-col">
-                    <a class="footer-icon" href="https://www.facebook.com/SNNRajCorp.Properties/" target="_blank">
+                    @if($data->facebook)
+                    <a class="footer-icon" href="{{$data->facebook}}" target="_blank">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a class="footer-icon" href="https://www.instagram.com/snnraj_corp/" target="_blank">
+                    @endif
+                    @if($data->instagram)
+                    <a class="footer-icon" href="{{$data->instagram}}" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a class="footer-icon" href="https://www.youtube.com/channel/UCxUXVfRZdhyusYX2weNqVsw"
-                        target="_blank">
+                    @endif
+                    @if($data->youtube)
+                    <a class="footer-icon" href="{{$data->youtube}}"
+                    target="_blank">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <a class="footer-icon" href="https://www.linkedin.com/company/snn-raj-corp/" target="_blank">
+                    @endif
+                    @if($data->linkedin)
+                    <a class="footer-icon" href="{{$data->linkedin}}" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
+                    @endif
                 </div>
             </div>
         </div>

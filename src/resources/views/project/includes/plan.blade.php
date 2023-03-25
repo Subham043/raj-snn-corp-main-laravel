@@ -1,9 +1,10 @@
+@if($data->ProjectPlanCategory->count() > 0)
 <section class="m-0">
     <div class="plan-holder" id="plan-section">
         <div class="container">
             <div class="row justify-content-between align-items-center plan-header">
                 <h2 class="main-title">
-                    Master & <span>Unit Plans</span>
+                    {!!$data->plan_heading!!}
                 </h2>
                 <button data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Download PDF <i class="fas fa-download"></i>
@@ -14,9 +15,9 @@
                     <div class="row flex-wrap justify-content-between">
                         <div class="col-lg-2 col-md-3 col-sm-12">
                             <ul class="tabs">
-                                <li data-panel-name="panel1" class="active">Master Plan</li>
-                                <li data-panel-name="panel2">East Facing</li>
-                                <li data-panel-name="panel3">West Facing</li>
+                                @foreach ($data->ProjectPlanCategory as $k=>$v)
+                                <li data-panel-name="panel{{$k}}" class="{{$k==0 ? 'active' : ''}}">{{$v->name}}</li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="col-lg-10 col-md-9 col-sm-12" style="position: relative;" id="floor-container">
@@ -26,42 +27,21 @@
                                 </div>
                             </div>
 
-                            <div id="panel1" class="panel active">
+                            @foreach ($data->ProjectPlanCategory as $k=>$v)
+                            <div id="panel{{$k}}" class="panel {{$k==0 ? 'active' : ''}}">
+                                @if($v->ProjectPlanImage->count() > 0)
                                 <div class="tab-regular slider">
+                                    @foreach ($v->ProjectPlanImage as $item)
                                     <div class="slider-img">
-                                        <img src="{{ asset('assets/images/plans/1.jpg') }}" class="w-100"
+                                        <img src="{{ $item->image_link }}" class="w-100"
                                             alt="">
                                     </div>
+                                    @endforeach
                                 </div>
+                                @endif
                             </div>
+                            @endforeach
 
-                            <div id="panel2" class="panel">
-                                <div class="tab-regular slider">
-                                    <div class="slider-img">
-                                        <img src="{{ asset('assets/images/plans/2.jpg') }}" class="w-100" alt="">
-                                    </div>
-                                    <div class="slider-img">
-                                        <img src="{{ asset('assets/images/plans/3.jpg') }}" class="w-100" alt="">
-                                    </div>
-                                    <div class="slider-img">
-                                        <img src="{{ asset('assets/images/plans/4.jpg') }}" class="w-100" alt="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="panel3" class="panel">
-                                <div class="tab-regular slider">
-                                    <div class="slider-img">
-                                        <img src="{{ asset('assets/images/plans/5.jpg') }}" class="w-100" alt="">
-                                    </div>
-                                    <div class="slider-img">
-                                        <img src="{{ asset('assets/images/plans/6.jpg') }}" class="w-100" alt="">
-                                    </div>
-                                    <div class="slider-img">
-                                        <img src="{{ asset('assets/images/plans/7.jpg') }}" class="w-100" alt="">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -71,3 +51,4 @@
         </div>
     </div>
 </section>
+@endif
