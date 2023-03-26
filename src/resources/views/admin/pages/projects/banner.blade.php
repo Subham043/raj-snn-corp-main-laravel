@@ -1,5 +1,8 @@
 @extends('admin.layouts.dashboard')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('admin/css/image-previewer.css')}}" type="text/css" />
+@stop
 
 @section('content')
 
@@ -10,7 +13,7 @@
         @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_list.get'), 'list'=>['Banner']])
         <!-- end page title -->
 
-        <div class="row">
+        <div class="row" id="image-container">
             @include('admin.includes.back_button', ['link'=>route('project_list.get')])
             <div class="col-lg-12">
                 <form id="countryForm" method="post" action="{{route('project_banner.post', $project_id)}}" enctype="multipart/form-data">
@@ -30,9 +33,13 @@
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.file_input', ['key'=>'banner_image', 'label'=>'Banner Image'])
+                                        <img src="{{$data->banner_image_link}}" alt="" style="height:80px; object-fit:contain;">
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.textarea', ['key'=>'points', 'label'=>'Points', 'value'=>!empty($data) ? $data->points : old('points')])
+                                        <p>
+                                            <code>Note : </code> Use comma seperated points. eg: <i> test1, test2 </i>
+                                        </p>
                                     </div>
 
                                     <!--end col-->
@@ -119,6 +126,31 @@ validation
   .onSuccess(async (event) => {
     event.target.submit();
   });
+</script>
+
+<script src="{{ asset('admin/js/pages/img-previewer.min.js') }}"></script>
+<script>
+    const myViewer = new ImgPreviewer('#image-container',{
+      // aspect ratio of image
+        fillRatio: 0.9,
+        // attribute that holds the image
+        dataUrlKey: 'src',
+        // additional styles
+        style: {
+            modalOpacity: 0.6,
+            headerOpacity: 0,
+            zIndex: 99
+        },
+        // zoom options
+        imageZoom: {
+            min: 0.1,
+            max: 5,
+            step: 0.1
+        },
+        // detect whether the parent element of the image is hidden by the css style
+        bubblingLevel: 0,
+
+    });
 </script>
 
 @stop

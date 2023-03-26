@@ -1,5 +1,8 @@
 @extends('admin.layouts.dashboard')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('admin/css/image-previewer.css')}}" type="text/css" />
+@stop
 
 @section('content')
 
@@ -10,7 +13,7 @@
         @include('admin.includes.breadcrumb', ['page'=>'Projects', 'page_link'=>route('project_list.get'), 'list'=>['Amenities', 'Update']])
         <!-- end page title -->
 
-        <div class="row">
+        <div class="row" id="image-container">
             @include('admin.includes.back_button', ['link'=>route('project_amenities_list.get', $data->project_id)])
             <div class="col-lg-12">
                 <form id="countryForm" method="post" action="{{route('project_amenities_update.post', [$project_id, $data->id])}}" enctype="multipart/form-data">
@@ -27,6 +30,7 @@
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'icon_image', 'label'=>'Icon Image'])
+                                        <img src="{{$data->icon_image_link}}" alt="" style="height:80px; object-fit:contain;">
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>
@@ -98,4 +102,28 @@ validation
   });
 </script>
 
+<script src="{{ asset('admin/js/pages/img-previewer.min.js') }}"></script>
+<script>
+    const myViewer = new ImgPreviewer('#image-container',{
+      // aspect ratio of image
+        fillRatio: 0.9,
+        // attribute that holds the image
+        dataUrlKey: 'src',
+        // additional styles
+        style: {
+            modalOpacity: 0.6,
+            headerOpacity: 0,
+            zIndex: 99
+        },
+        // zoom options
+        imageZoom: {
+            min: 0.1,
+            max: 5,
+            step: 0.1
+        },
+        // detect whether the parent element of the image is hidden by the css style
+        bubblingLevel: 0,
+
+    });
+</script>
 @stop

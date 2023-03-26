@@ -1,6 +1,6 @@
 <?php
 
-use App\Modules\Projects\Controllers\Main\ProjectViewMainController;
+use App\Modules\Enquiries\Controllers\EnquiryCreateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/{slug}', [ProjectViewMainController::class, 'get', 'as' => 'project_view_main.get'])->name('project_view_main.get');
+Route::group(['middleware' => 'throttle:3,1'], function () {
+    Route::post('/enquiry/create', [EnquiryCreateController::class, 'post', 'as' => 'enquiry_create.post'])->name('enquiry_create.post');
+});

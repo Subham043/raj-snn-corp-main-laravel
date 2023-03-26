@@ -92,6 +92,9 @@
                                                     <div class="edit">
                                                         <a href="{{route('project_amenities_list.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">Amenities Section</a>
                                                     </div>
+                                                    <div class="edit">
+                                                        <a href="{{route('project_preview.get', $item->id)}}" target="_blank" style="background:purple;color:white;border-color:purple;" class="btn btn-sm btn-success edit-item-btn">Preview</a>
+                                                    </div>
                                                     <div class="remove">
                                                         <button class="btn btn-sm btn-danger remove-item-btn" style="background:red" onclick="deleteHandler('{{route('project_delete.get', $item->id)}}')">Delete</button>
                                                     </div>

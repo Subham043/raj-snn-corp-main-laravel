@@ -47,7 +47,7 @@
                                             <td class="customer_name">{{$item->name}}</td>
                                             <td class="customer_name">{{$item->email}}</td>
                                             <td class="customer_name">{{$item->phone}}</td>
-                                            <td class="customer_name">{{$item->page_url}}</td>
+                                            <td class="customer_name"><a href="{{$item->page_url}}" target="_blank" rel="noopener noreferrer">{{$item->page_url}}</a></td>
                                             <td class="date">{{$item->created_at}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">

@@ -46,6 +46,11 @@ class ProjectService
         return $this->projectModel->with(['ProjectAbout', 'ProjectGallery', 'ProjectAmenities', 'ProjectLocation', 'ProjectTable', 'ProjectPlanCategory.ProjectPlanImage', 'ProjectBanner', 'ProjectConnectivity'])->where('publish_status', PublishStatusEnum::ACTIVE->label())->where('slug', $slug)->firstOrFail();
     }
 
+    public function getPreview(Int $id): Project
+    {
+        return $this->projectModel->with(['ProjectAbout', 'ProjectGallery', 'ProjectAmenities', 'ProjectLocation', 'ProjectTable', 'ProjectPlanCategory.ProjectPlanImage', 'ProjectBanner', 'ProjectConnectivity'])->findOrFail($id);
+    }
+
     public function create(ProjectCreateRequest $request): void
     {
         $header_logo = (new FileService)->save_file($request, 'header_logo', $this->path);

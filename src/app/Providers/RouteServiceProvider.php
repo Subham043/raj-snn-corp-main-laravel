@@ -41,6 +41,8 @@ class RouteServiceProvider extends ServiceProvider
             if(count($host_array)==2){
                 Route::middleware('web')
                     ->group(base_path('routes/web.php'));
+                Route::middleware('web')
+                    ->group(base_path('routes/common_web.php'));
             }
 
             if(count($host_array)==3 && $host_array[0]=='api'){
@@ -49,6 +51,13 @@ class RouteServiceProvider extends ServiceProvider
 
             if(count($host_array)==3 && $host_array[0]=='admin'){
                 Route::domain($host)->middleware('web')->group(base_path('routes/admin_web.php'));
+            }
+
+            if(count($host_array)==3){
+                $url = '{slug?}.'.$host_array[1].'.'.$host_array[2];
+                Route::domain($url)->middleware('web')->group(base_path('routes/project_web.php'));
+                Route::domain($host)->middleware('web')
+                    ->group(base_path('routes/common_web.php'));
             }
 
         });

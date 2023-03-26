@@ -2,11 +2,14 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Exceptions\ThrottleRequestsException;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
+use Illuminate\Http\Response;
 
 class Handler extends ExceptionHandler
 {
@@ -51,6 +54,37 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $exception)
     {
+        if ($exception instanceof ThrottleRequestsException && $request->wantsJson()) {
+            return response()->json([
+                'status' => false,
+                'error' => 'Too many attempts, please try again after sometime',
+            ], 429);
+        }
+
+        if ($exception instanceof MethodNotAllowedHttpException && $request->wantsJson()) {
+            return response()->json([
+                'error' => $exception->getMessage(),
+            ], 405);
+        }
+
+        if ($exception instanceof ModelNotFoundException && $request->wantsJson()) {
+            return response()->json([
+                'error' => 'Oops! No data found ',
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        if ($exception instanceof NotFoundHttpException && $request->wantsJson()) {
+            return response()->json([
+                'error' => 'Oops! Invalid link',
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        if ($exception instanceof DecryptException && $request->wantsJson()) {
+            return response()->json([
+                'error' => 'Oops! You have entered invalid link',
+            ], Response::HTTP_NOT_FOUND);
+        }
+
         if ($exception instanceof ModelNotFoundException) {
             throw new NotFoundHttpException('Oops! No data found');
         }

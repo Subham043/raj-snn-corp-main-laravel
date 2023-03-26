@@ -32,6 +32,7 @@ use App\Modules\Projects\Controllers\ProjectPlanCategoryUpdateController;
 use App\Modules\Projects\Controllers\ProjectPlanImageCreateController;
 use App\Modules\Projects\Controllers\ProjectPlanImageDeleteController;
 use App\Modules\Projects\Controllers\ProjectPlanImagePaginateController;
+use App\Modules\Projects\Controllers\ProjectPreviewController;
 use App\Modules\Projects\Controllers\ProjectSectionHeadingController;
 use App\Modules\Projects\Controllers\ProjectSpecificationCreateController;
 use App\Modules\Projects\Controllers\ProjectSpecificationDeleteController;
@@ -82,6 +83,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/create', [ProjectCreateController::class, 'get', 'as' => 'project_create.get'])->name('project_create.get');
         Route::post('/create-post', [ProjectCreateController::class, 'post', 'as' => 'project_create.post'])->name('project_create.post');
         Route::get('/', [ProjectPaginateController::class, 'get', 'as' => 'project_list.get'])->name('project_list.get');
+        Route::get('/preview/{id}', [ProjectPreviewController::class, 'get', 'as' => 'project_preview.get'])->name('project_preview.get');
         Route::get('/delete/{id}', [ProjectDeleteController::class, 'get', 'as' => 'project_delete.get'])->name('project_delete.get');
         Route::get('/update/{id}', [ProjectUpdateController::class, 'get', 'as' => 'project_update.get'])->name('project_update.get');
         Route::post('/update-post/{id}', [ProjectUpdateController::class, 'post', 'as' => 'project_update.post'])->name('project_update.post');

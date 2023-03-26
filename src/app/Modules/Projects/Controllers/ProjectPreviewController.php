@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Projects\Controllers\Main;
+namespace App\Modules\Projects\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Projects\Services\ProjectService;
 
-class ProjectViewMainController extends Controller
+class ProjectPreviewController extends Controller
 {
     private $projectService;
 
@@ -14,8 +14,8 @@ class ProjectViewMainController extends Controller
         $this->projectService = $projectService;
     }
 
-    public function get($slug){
-        $data = $this->projectService->getBySlug($slug);
+    public function get($id){
+        $data = $this->projectService->getPreview($id);
         return view('project.pages.index')->with('data', $data);
     }
 }
