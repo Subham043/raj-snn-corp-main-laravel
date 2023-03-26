@@ -40,6 +40,7 @@
                             <input type="number" class="form-control" id="phone2" name="phone"
                                 placeholder="Enter your phone">
                         </div>
+                        <input type="hidden" name="page_url" id="page_url" value="{{Request::url()}}">
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary formbuttonstyler"
                                 id="submitBtn2">Submit</button>

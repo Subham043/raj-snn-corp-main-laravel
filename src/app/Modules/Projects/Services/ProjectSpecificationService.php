@@ -55,7 +55,9 @@ class ProjectSpecificationService
     {
         if($request->hasFile('icon_image')){
             $icon_image = (new FileService)->save_file($request, 'icon_image', $this->path);
-            (new FileService)->delete_file('app/'.$this->path.'/'.$data->icon_image);
+            if($data->icon_image){
+                (new FileService)->delete_file('app/'.$this->path.'/'.$data->icon_image);
+            }
             $data->update([
                 'icon_image' => $icon_image,
             ]);
@@ -64,7 +66,9 @@ class ProjectSpecificationService
 
     public function delete(ProjectSpecification $data): void
     {
-        (new FileService)->delete_file('app/'.$this->path.'/'.$data->icon_image);
+        if($data->icon_image){
+            (new FileService)->delete_file('app/'.$this->path.'/'.$data->icon_image);
+        }
         $data->delete();
     }
 

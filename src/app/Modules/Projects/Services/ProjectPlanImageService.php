@@ -38,7 +38,9 @@ class ProjectPlanImageService
 
     public function delete(ProjectPlanImage $data): void
     {
-        (new FileService)->delete_file('app/'.$this->path.'/'.$data->image);
+        if($data->image){
+            (new FileService)->delete_file('app/'.$this->path.'/'.$data->image);
+        }
         $data->delete();
     }
 

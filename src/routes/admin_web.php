@@ -6,6 +6,8 @@ use App\Modules\Authentication\Controllers\LoginController;
 use App\Modules\Authentication\Controllers\LogoutController;
 use App\Modules\Authentication\Controllers\ProfileController;
 use App\Modules\Authentication\Controllers\ResetPasswordController;
+use App\Modules\Enquiries\Controllers\EnquiryDeleteController;
+use App\Modules\Enquiries\Controllers\EnquiryPaginateController;
 use App\Modules\Projects\Controllers\ProjectAboutController;
 use App\Modules\Projects\Controllers\ProjectAmenitiesCreateController;
 use App\Modules\Projects\Controllers\ProjectAmenitiesDeleteController;
@@ -68,6 +70,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [ProfileController::class, 'get', 'as' => 'profile.get'])->name('profile.get');
         Route::post('/update', [ProfileController::class, 'post', 'as' => 'profile.post'])->name('profile.post');
         Route::post('/profile-password-update', [PasswordUpdateController::class, 'post', 'as' => 'password.post'])->name('password.post');
+    });
+
+    Route::prefix('/enquiry')->group(function () {
+        Route::get('/', [EnquiryPaginateController::class, 'get', 'as' => 'enquiry_list.get'])->name('enquiry_list.get');
+        Route::get('/delete/{id}', [EnquiryDeleteController::class, 'get', 'as' => 'enquiry_delete.get'])->name('enquiry_delete.get');
+
     });
 
     Route::prefix('/project')->group(function () {

@@ -38,7 +38,9 @@ class ProjectGalleryService
 
     public function delete(ProjectGallery $data): void
     {
-        (new FileService)->delete_file('app/'.$this->path.'/'.$data->image);
+        if($data->image){
+            (new FileService)->delete_file('app/'.$this->path.'/'.$data->image);
+        }
         $data->delete();
     }
 

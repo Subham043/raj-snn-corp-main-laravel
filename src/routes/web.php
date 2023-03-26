@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/{slug}', [ProjectViewMainController::class, 'get', 'as' => 'project_view_main.get'])->name('project_view_main.get');
+Route::post('/enquiry/create', [EnquiryCreateController::class, 'post', 'as' => 'enquiry_create.post'])->name('enquiry_create.post');

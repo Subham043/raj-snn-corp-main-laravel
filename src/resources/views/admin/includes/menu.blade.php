@@ -34,8 +34,13 @@
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                             <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('enquiry_list.get')) !== false ? 'active' : ''}}" href="{{route('enquiry_list.get')}}">
+                                    <i class="ri-message-fill"></i> <span data-key="t-widgets">Enquiries</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),route('project_list.get')) !== false ? 'active' : ''}}" href="{{route('project_list.get')}}">
-                                    <i class="ri-message-fill"></i> <span data-key="t-widgets">Projects</span>
+                                    <i class="ri-building-fill"></i> <span data-key="t-widgets">Projects</span>
                                 </a>
                             </li>
                             {{-- <li class="nav-item">

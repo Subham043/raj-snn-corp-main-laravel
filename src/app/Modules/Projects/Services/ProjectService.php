@@ -77,21 +77,27 @@ class ProjectService
     {
         if($request->hasFile('header_logo')){
             $header_logo = (new FileService)->save_file($request, 'header_logo', $this->path);
-            (new FileService)->delete_file('app/'.$this->path.'/'.$data->header_logo);
+            if($data->header_logo){
+                (new FileService)->delete_file('app/'.$this->path.'/'.$data->header_logo);
+            }
             $data->update([
                 'header_logo' => $header_logo,
             ]);
         }
         if($request->hasFile('footer_logo')){
             $footer_logo = (new FileService)->save_file($request, 'footer_logo', $this->path);
-            (new FileService)->delete_file('app/'.$this->path.'/'.$data->footer_logo);
+            if($data->footer_logo){
+                (new FileService)->delete_file('app/'.$this->path.'/'.$data->footer_logo);
+            }
             $data->update([
                 'footer_logo' => $footer_logo,
             ]);
         }
         if($request->hasFile('og_image')){
             $og_image = (new FileService)->save_file($request, 'og_image', $this->path);
-            (new FileService)->delete_file('app/'.$this->path.'/'.$data->og_image);
+            if($data->og_image){
+                (new FileService)->delete_file('app/'.$this->path.'/'.$data->og_image);
+            }
             $data->update([
                 'og_image' => $og_image,
             ]);
@@ -100,8 +106,12 @@ class ProjectService
 
     public function delete(Project $data): void
     {
-        (new FileService)->delete_file('app/'.$this->path.'/'.$data->header_logo);
-        (new FileService)->delete_file('app/'.$this->path.'/'.$data->footer_logo);
+        if($data->header_logo){
+            (new FileService)->delete_file('app/'.$this->path.'/'.$data->header_logo);
+        }
+        if($data->footer_logo){
+            (new FileService)->delete_file('app/'.$this->path.'/'.$data->footer_logo);
+        }
         if(!empty($data->og_image)){
             (new FileService)->delete_file('app/'.$this->path.'/'.$data->og_image);
         }
