@@ -57,7 +57,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/', [LoginController::class, 'get', 'as' => 'login.get'])->name('login.get');
+    Route::get('/login', [LoginController::class, 'get', 'as' => 'login.get'])->name('login.get');
     Route::post('/authenticate', [LoginController::class, 'post', 'as' => 'login.post'])->name('login.post');
     Route::get('/forgot-password', [ForgotPasswordController::class, 'get', 'as' => 'forgot_password.get'])->name('forgot_password.get');
     Route::post('/forgot-password', [ForgotPasswordController::class, 'post', 'as' => 'forgot_password.post'])->name('forgot_password.post');

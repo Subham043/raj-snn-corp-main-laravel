@@ -16,21 +16,21 @@
                         <div class="col-lg-2 col-md-3 col-sm-12">
                             <ul class="tabs">
                                 @foreach ($data->ProjectPlanCategory as $k=>$v)
-                                <li data-panel-name="panel{{$k}}" class="{{$k==0 ? 'active' : ''}}">{{$v->name}}</li>
+                                <li data-panel-name="panel{{$k}}" data-panel-key="{{$k}}" class="{{$k==0 ? 'active' : ''}}">{{$v->name}}</li>
                                 @endforeach
                             </ul>
                         </div>
                         <div class="col-lg-10 col-md-9 col-sm-12" style="position: relative;" id="floor-container">
-                            <div class="loader-div-tab">
+                            {{-- <div class="loader-div-tab">
                                 <div class="spinner-border" role="status">
                                     <span class="visually-hidden">Loading...</span>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             @foreach ($data->ProjectPlanCategory as $k=>$v)
                             <div id="panel{{$k}}" class="panel {{$k==0 ? 'active' : ''}}">
                                 @if($v->ProjectPlanImage->count() > 0)
-                                <div class="tab-regular slider">
+                                <div class="tab-regular slider owl-carousel">
                                     @foreach ($v->ProjectPlanImage as $item)
                                     <div class="slider-img">
                                         <img src="{{ $item->image_link }}" class="w-100"

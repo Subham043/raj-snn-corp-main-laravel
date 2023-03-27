@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/tabs.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/img-previewer.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css')}}">
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css')}}">
 
