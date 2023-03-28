@@ -25,11 +25,11 @@ services:
     networks:
       - raj_snn_laravel
 
-  certbot:
-    image: certbot/certbot:latest
-    container_name: raj_snn_certbot
-    volumes:
-      - ./certbot/www/:/var/www/certbot/
+  # certbot:
+  #   image: certbot/certbot:latest
+  #   container_name: raj_snn_certbot
+  #   volumes:
+  #     - ./certbot/www/:/var/www/certbot/
 
   mysql:
     image: mariadb:10.5.8
