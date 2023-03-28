@@ -9,7 +9,7 @@ use App\Modules\Projects\Requests\ProjectLocationRequest;
 class ProjectLocationService
 {
     private $projectLocationModel;
-    private $path = 'public/upload/projects_location';
+    private $path = 'upload/projects_location';
 
     public function __construct(ProjectLocation $projectLocationModel)
     {

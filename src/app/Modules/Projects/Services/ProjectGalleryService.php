@@ -10,7 +10,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 class ProjectGalleryService
 {
     private $projectGalleryModel;
-    private $path = 'public/upload/projects_gallery';
+    private $path = 'upload/projects_gallery';
 
     public function __construct(ProjectGallery $projectGalleryModel)
     {

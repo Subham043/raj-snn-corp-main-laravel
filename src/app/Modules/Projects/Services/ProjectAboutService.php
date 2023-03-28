@@ -9,7 +9,7 @@ use App\Modules\Projects\Requests\ProjectAboutRequest;
 class ProjectAboutService
 {
     private $projectAboutModel;
-    private $path = 'public/upload/projects_about';
+    private $path = 'upload/projects_about';
 
     public function __construct(ProjectAbout $projectAboutModel)
     {

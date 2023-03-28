@@ -26,7 +26,7 @@ class PasswordPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'old_password' => ['required','string','min:8', function ($attribute, $value, $fail) {
+            'old_password' => ['required','string', function ($attribute, $value, $fail) {
                 if (!Hash::check($value, Auth::user()->getPassword())) {
                     $fail('The '.$attribute.' entered is incorrect.');
                 }

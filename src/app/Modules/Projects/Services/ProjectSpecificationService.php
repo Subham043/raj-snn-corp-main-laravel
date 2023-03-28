@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class ProjectSpecificationService
 {
     private $projectSpecificationModel;
-    private $path = 'public/upload/projects_specification';
+    private $path = 'upload/projects_specification';
 
     public function __construct(ProjectSpecification $projectSpecificationModel)
     {

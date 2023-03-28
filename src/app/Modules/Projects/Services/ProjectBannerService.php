@@ -9,7 +9,7 @@ use App\Modules\Projects\Requests\ProjectBannerRequest;
 class ProjectBannerService
 {
     private $projectBannerModel;
-    private $path = 'public/upload/projects_banner';
+    private $path = 'upload/projects_banner';
 
     public function __construct(ProjectBanner $projectBannerModel)
     {

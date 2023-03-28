@@ -28,7 +28,7 @@ class ProjectSpecification extends Model
     protected function iconImageLink(): Attribute
     {
         return new Attribute(
-            get: fn () => asset('storage/upload/projects_specification/'.$this->icon_image),
+            get: fn () => asset('upload/projects_specification/'.$this->icon_image),
         );
     }
 

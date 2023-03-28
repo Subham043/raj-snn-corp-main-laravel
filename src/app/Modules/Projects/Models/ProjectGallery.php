@@ -27,7 +27,7 @@ class ProjectGallery extends Model
     protected function imageLink(): Attribute
     {
         return new Attribute(
-            get: fn () => asset('storage/upload/projects_gallery/'.$this->image),
+            get: fn () => asset('upload/projects_gallery/'.$this->image),
         );
     }
 
