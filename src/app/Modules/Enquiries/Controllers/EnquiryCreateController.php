@@ -26,7 +26,7 @@ class EnquiryCreateController extends Controller
             $this->enquiryService->create($request);
             return response()->json(['message'=>'Enquiry created successfully.'], 201);
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return response()->json(['message'=>'Oops! Something went wrong. Please try again!'], 400);
         }
 

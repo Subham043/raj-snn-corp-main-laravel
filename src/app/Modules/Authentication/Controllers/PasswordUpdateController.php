@@ -22,7 +22,7 @@ class PasswordUpdateController extends Controller
             $this->authService->password_update($request->all());
             return response()->json(["message" => "Password Updated successfully."], 201);
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return response()->json(["error"=>"something went wrong. Please try again"], 400);
         }
 

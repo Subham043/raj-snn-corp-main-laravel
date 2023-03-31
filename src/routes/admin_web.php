@@ -1,4 +1,5 @@
 <?php
+use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 
 use App\Modules\Authentication\Controllers\PasswordUpdateController;
 use App\Modules\Authentication\Controllers\ForgotPasswordController;
@@ -66,6 +67,8 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::get('health', HealthCheckResultsController::class);
 
     Route::prefix('/profile')->group(function () {
         Route::get('/', [ProfileController::class, 'get', 'as' => 'profile.get'])->name('profile.get');

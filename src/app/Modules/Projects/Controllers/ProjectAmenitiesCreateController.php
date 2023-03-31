@@ -34,7 +34,7 @@ class ProjectAmenitiesCreateController extends Controller
             $this->projectAmenitiesService->create($request, $project_id);
             return redirect()->intended(route('project_amenities_create.get', $project_id))->with('success_status', 'Project Amenity created successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('project_amenities_create.get', $project_id))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 

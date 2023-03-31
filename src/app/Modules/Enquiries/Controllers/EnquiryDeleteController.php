@@ -21,7 +21,7 @@ class EnquiryDeleteController extends Controller
             $this->enquiryService->delete($data);
             return redirect()->intended(route('enquiry_list.get'))->with('success_status', 'Enquiry deleted successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('enquiry_list.get'))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
     }
