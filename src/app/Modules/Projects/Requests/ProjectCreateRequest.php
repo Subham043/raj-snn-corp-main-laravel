@@ -82,6 +82,11 @@ class ProjectCreateRequest extends FormRequest
         $request = $this->validated();
         $request['project_status'] = empty($request['project_status']) ? ProjectStatusEnum::COMPLETED->label() : ($request['project_status'] == "on" ? ProjectStatusEnum::UPCOMING->label() : ProjectStatusEnum::COMPLETED->label());
         $request['publish_status'] = empty($request['publish_status']) ? PublishStatusEnum::DRAFT->label() : ($request['publish_status'] == "on" ? PublishStatusEnum::ACTIVE->label() : PublishStatusEnum::DRAFT->label());
-        $this->replace(Purify::clean($request));
+        $meta_header = $request['meta_header'];
+        $meta_footer = $request['meta_footer'];
+        $request = Purify::clean($request);
+        $request['meta_header'] = $meta_header;
+        $request['meta_footer'] = $meta_footer;
+        $this->replace($request);
     }
 }
