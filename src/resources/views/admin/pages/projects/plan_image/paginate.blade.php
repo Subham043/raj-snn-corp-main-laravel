@@ -46,7 +46,9 @@
                                         @foreach ($data->items() as $item)
                                         <tr>
                                             <td class="customer_name">
-                                                <img src="{{$item->image_link}}" alt="" style="height:80px; object-fit:contain;"></td>
+                                                @if(!empty($item->image_link))
+                                                    <img src="{{$item->image_link}}" alt="" style="height:80px; object-fit:contain;"></td>
+                                                @endif
                                             <td class="date">{{$item->created_at}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">

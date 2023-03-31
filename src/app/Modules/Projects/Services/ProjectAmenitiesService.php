@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class ProjectAmenitiesService
 {
     private $projectAmenitiesModel;
-    private $path = 'upload/projects_amenities';
+    private $path = 'public/upload/projects_amenities';
 
     public function __construct(ProjectAmenities $projectAmenitiesModel)
     {

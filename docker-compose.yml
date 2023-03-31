@@ -5,31 +5,6 @@ networks:
 
 
 services:
-  app:
-    container_name: raj_snn_nginx
-    restart: unless-stopped
-    build:
-      context: ./dockerfiles
-      dockerfile: nginx.dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    ports:
-      - "8085:80"
-    volumes:
-      - ./src:/var/www/html:delegated
-      - ./certbot/www:/var/www/certbot/
-    depends_on:
-      - php
-      - mysql
-    networks:
-      - raj_snn_laravel
-
-  # certbot:
-  #   image: certbot/certbot:latest
-  #   container_name: raj_snn_certbot
-  #   volumes:
-  #     - ./certbot/www/:/var/www/certbot/
 
   mysql:
     image: mariadb:10.5.8
@@ -56,52 +31,5 @@ services:
       - '8086:80'
     env_file:
       - .env
-    networks:
-      - raj_snn_laravel
-
-  php:
-    build:
-      context: ./dockerfiles
-      dockerfile: php.dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    container_name: raj_snn_php
-    ports:
-      - "9002:9000"
-    volumes:
-      - ./src:/var/www/html:delegated
-    networks:
-      - raj_snn_laravel
-
-  composer:
-    build:
-      context: ./dockerfiles
-      dockerfile: php.dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    container_name: raj_snn_composer
-    volumes:
-      - ./src:/var/www/html
-    depends_on:
-      - php
-    entrypoint: [ 'composer', '--ignore-platform-reqs' ]
-    networks:
-      - raj_snn_laravel
-
-  artisan:
-    build:
-      context: ./dockerfiles
-      dockerfile: php.dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    container_name: raj_snn_artisan
-    volumes:
-      - ./src:/var/www/html:delegated
-    depends_on:
-      - mysql
-    entrypoint: [ 'php', '/var/www/html/artisan' ]
     networks:
       - raj_snn_laravel

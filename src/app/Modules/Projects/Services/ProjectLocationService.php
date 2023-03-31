@@ -9,7 +9,7 @@ use App\Modules\Projects\Requests\ProjectLocationRequest;
 class ProjectLocationService
 {
     private $projectLocationModel;
-    private $path = 'upload/projects_location';
+    private $path = 'public/upload/projects_location';
 
     public function __construct(ProjectLocation $projectLocationModel)
     {
@@ -30,11 +30,11 @@ class ProjectLocationService
     {
         $map_image = (new FileService)->save_file($request, 'map_image', $this->path);
         $this->projectLocationModel->updateOrCreate(
+            ['project_id' => $project_id],
             [
                 ...$request->except('location_heading', 'map_image'),
                 'map_image' => $map_image,
-            ],
-            ['project_id' => $project_id]
+            ]
         );
     }
 }

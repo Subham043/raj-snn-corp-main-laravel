@@ -30,7 +30,7 @@ class ProjectBanner extends Model
     protected function bannerImageLink(): Attribute
     {
         return new Attribute(
-            get: fn () => asset('upload/projects_banner/'.$this->banner_image),
+            get: fn () => asset('storage/upload/projects_banner/'.$this->banner_image),
         );
     }
 

@@ -9,7 +9,7 @@ use App\Modules\Projects\Requests\ProjectBannerRequest;
 class ProjectBannerService
 {
     private $projectBannerModel;
-    private $path = 'upload/projects_banner';
+    private $path = 'public/upload/projects_banner';
 
     public function __construct(ProjectBanner $projectBannerModel)
     {
@@ -31,11 +31,11 @@ class ProjectBannerService
         $banner_image = (new FileService)->save_file($request, 'banner_image', $this->path);
 
         $this->projectBannerModel->updateOrCreate(
+            ['project_id' => $project_id],
             [
                 ...$request->except('banner_image'),
                 'banner_image' => $banner_image,
-            ],
-            ['project_id' => $project_id]
+            ]
         );
     }
 }

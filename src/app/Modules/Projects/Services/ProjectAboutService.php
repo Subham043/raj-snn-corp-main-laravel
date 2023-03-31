@@ -9,7 +9,7 @@ use App\Modules\Projects\Requests\ProjectAboutRequest;
 class ProjectAboutService
 {
     private $projectAboutModel;
-    private $path = 'upload/projects_about';
+    private $path = 'public/upload/projects_about';
 
     public function __construct(ProjectAbout $projectAboutModel)
     {
@@ -32,12 +32,12 @@ class ProjectAboutService
         $about_logo = (new FileService)->save_file($request, 'about_logo', $this->path);
 
         $this->projectAboutModel->updateOrCreate(
+            ['project_id' => $project_id],
             [
                 ...$request->except('left_image', 'about_logo'),
                 'about_logo' => $about_logo,
                 'left_image' => $left_image,
-            ],
-            ['project_id' => $project_id]
+            ]
         );
     }
 }

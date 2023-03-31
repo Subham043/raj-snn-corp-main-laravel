@@ -36,18 +36,22 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'rera', 'label'=>'Rera Number', 'value'=>!empty($data) ? $data->rera : old('rera')])
+                                        @include('admin.includes.input', ['key'=>'rera', 'label'=>'Rera Number', 'value'=>!empty($data) ? (old('rera') ? old('rera') : $data->rera) : old('rera')])
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'about_logo', 'label'=>'About Logo'])
-                                        <img src="{{$data->about_logo_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @if(!empty($data->about_logo_link))
+                                            <img src="{{$data->about_logo_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @endif
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'left_image', 'label'=>'Left Image'])
-                                        <img src="{{$data->left_image_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @if(!empty($data->left_image_link))
+                                            <img src="{{$data->left_image_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @endif
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>!empty($data) ? $data->description : old('description')])
+                                        @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>!empty($data) ? (old('description') ? old('description') : $data->description) : old('description')])
                                     </div>
 
                                     <!--end col-->

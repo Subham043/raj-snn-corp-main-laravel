@@ -14,7 +14,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class ProjectService
 {
     private $projectModel;
-    private $path = 'upload/projects';
+    private $path = 'public/upload/projects';
 
     public function __construct(Project $projectModel)
     {

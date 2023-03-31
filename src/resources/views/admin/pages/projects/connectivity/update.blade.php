@@ -23,10 +23,10 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>$data->title])
+                                        @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>old('title') ? old('title') : $data->title])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.textarea', ['key'=>'points', 'label'=>'Points', 'value'=>$data->points])
+                                        @include('admin.includes.textarea', ['key'=>'points', 'label'=>'Points', 'value'=>old('points') ? old('points') : $data->points])
                                         <p>
                                             <code>Note : </code> Use comma seperated points. eg: <i> test1, test2 </i>
                                         </p>

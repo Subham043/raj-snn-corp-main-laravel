@@ -84,21 +84,21 @@ class Project extends Model
     protected function headerLogoLink(): Attribute
     {
         return new Attribute(
-            get: fn () => asset('upload/projects/'.$this->header_logo),
+            get: fn () => asset('storage/upload/projects/'.$this->header_logo),
         );
     }
 
     protected function footerLogoLink(): Attribute
     {
         return new Attribute(
-            get: fn () => asset('upload/projects/'.$this->footer_logo),
+            get: fn () => asset('storage/upload/projects/'.$this->footer_logo),
         );
     }
 
     protected function ogImageLink(): Attribute
     {
         return new Attribute(
-            get: fn () => !empty($this->og_image) ? asset('upload/projects/'.$this->og_image): null,
+            get: fn () => !empty($this->og_image) ? asset('storage/upload/projects/'.$this->og_image): null,
         );
     }
 

@@ -26,27 +26,31 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-3 col-md-3">
-                                        @include('admin.includes.input', ['key'=>'name', 'label'=>'Project Name', 'value'=>$data->name])
+                                        @include('admin.includes.input', ['key'=>'name', 'label'=>'Project Name', 'value'=>old('name') ? old('name') : $data->name])
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
-                                        @include('admin.includes.input', ['key'=>'slug', 'label'=>'Project Slug', 'value'=>$data->slug])
+                                        @include('admin.includes.input', ['key'=>'slug', 'label'=>'Project Slug', 'value'=>old('slug') ? old('slug') : $data->slug])
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
-                                        @include('admin.includes.input', ['key'=>'email', 'label'=>'Project Email', 'value'=>$data->email])
+                                        @include('admin.includes.input', ['key'=>'email', 'label'=>'Project Email', 'value'=>old('email') ? old('email') : $data->email])
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
-                                        @include('admin.includes.input', ['key'=>'phone', 'label'=>'Project Phone', 'value'=>$data->phone])
+                                        @include('admin.includes.input', ['key'=>'phone', 'label'=>'Project Phone', 'value'=>old('phone') ? old('phone') : $data->phone])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.textarea', ['key'=>'address', 'label'=>'Project Address', 'value'=>$data->address])
+                                        @include('admin.includes.textarea', ['key'=>'address', 'label'=>'Project Address', 'value'=>old('address') ? old('address') : $data->address])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'header_logo', 'label'=>'Header Logo'])
-                                        <img src="{{$data->header_logo_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @if(!empty($data->header_logo_link))
+                                            <img src="{{$data->header_logo_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @endif
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'footer_logo', 'label'=>'Footer Logo'])
-                                        <img src="{{$data->footer_logo_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @if(!empty($data->footer_logo_link))
+                                            <img src="{{$data->footer_logo_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @endif
                                     </div>
 
                                     <!--end col-->
@@ -87,16 +91,16 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-3 col-md-3">
-                                        @include('admin.includes.input', ['key'=>'facebook', 'label'=>'Facebook', 'value'=>$data->facebook])
+                                        @include('admin.includes.input', ['key'=>'facebook', 'label'=>'Facebook', 'value'=>old('facebook') ? old('facebook') : $data->facebook])
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
-                                        @include('admin.includes.input', ['key'=>'instagram', 'label'=>'Instagram', 'value'=>$data->instagram])
+                                        @include('admin.includes.input', ['key'=>'instagram', 'label'=>'Instagram', 'value'=>old('instagram') ? old('instagram') : $data->instagram])
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
-                                        @include('admin.includes.input', ['key'=>'youtube', 'label'=>'Youtube', 'value'=>$data->youtube])
+                                        @include('admin.includes.input', ['key'=>'youtube', 'label'=>'Youtube', 'value'=>old('youtube') ? old('youtube') : $data->youtube])
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
-                                        @include('admin.includes.input', ['key'=>'linkedin', 'label'=>'Linkedin', 'value'=>$data->linkedin])
+                                        @include('admin.includes.input', ['key'=>'linkedin', 'label'=>'Linkedin', 'value'=>old('linkedin') ? old('linkedin') : $data->linkedin])
                                     </div>
 
                                 </div>
@@ -113,22 +117,22 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.textarea', ['key'=>'meta_title', 'label'=>'Meta Title', 'value'=>$data->meta_title])
+                                        @include('admin.includes.textarea', ['key'=>'meta_title', 'label'=>'Meta Title', 'value'=>old('meta_title') ? old('meta_title') : $data->meta_title])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.textarea', ['key'=>'meta_description', 'label'=>'Meta Description', 'value'=>$data->meta_description])
+                                        @include('admin.includes.textarea', ['key'=>'meta_description', 'label'=>'Meta Description', 'value'=>old('meta_description') ? old('meta_description') : $data->meta_description])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.textarea', ['key'=>'og_locale', 'label'=>'Og Locale', 'value'=>$data->og_locale])
+                                        @include('admin.includes.textarea', ['key'=>'og_locale', 'label'=>'Og Locale', 'value'=>old('og_locale') ? old('og_locale') : $data->og_locale])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.textarea', ['key'=>'og_type', 'label'=>'Og Type', 'value'=>$data->og_type])
+                                        @include('admin.includes.textarea', ['key'=>'og_type', 'label'=>'Og Type', 'value'=>old('og_type') ? old('og_type') : $data->og_type])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.textarea', ['key'=>'og_description', 'label'=>'Og Description', 'value'=>$data->og_description])
+                                        @include('admin.includes.textarea', ['key'=>'og_description', 'label'=>'Og Description', 'value'=>old('og_description') ? old('og_description') : $data->og_description])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.textarea', ['key'=>'og_site_name', 'label'=>'Og Site Name', 'value'=>$data->og_site_name])
+                                        @include('admin.includes.textarea', ['key'=>'og_site_name', 'label'=>'Og Site Name', 'value'=>old('og_site_name') ? old('og_site_name') : $data->og_site_name])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.file_input', ['key'=>'og_image', 'label'=>'Og Image'])
@@ -137,10 +141,10 @@
                                         @endif
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.textarea', ['key'=>'meta_header', 'label'=>'Meta Header', 'value'=>$data->meta_header])
+                                        @include('admin.includes.textarea', ['key'=>'meta_header', 'label'=>'Meta Header', 'value'=>old('meta_header') ? old('meta_header') : $data->meta_header])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.textarea', ['key'=>'meta_footer', 'label'=>'Meta Footer', 'value'=>$data->meta_footer])
+                                        @include('admin.includes.textarea', ['key'=>'meta_footer', 'label'=>'Meta Footer', 'value'=>old('meta_footer') ? old('meta_footer') : $data->meta_footer])
                                     </div>
 
 

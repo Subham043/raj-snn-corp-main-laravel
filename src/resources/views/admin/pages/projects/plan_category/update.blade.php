@@ -23,7 +23,7 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.input', ['key'=>'name', 'label'=>'Category Name', 'value'=>$data->name])
+                                        @include('admin.includes.input', ['key'=>'name', 'label'=>'Category Name', 'value'=>old('name') ? old('name') : $data->name])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>

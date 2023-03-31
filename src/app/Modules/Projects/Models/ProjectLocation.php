@@ -29,7 +29,7 @@ class ProjectLocation extends Model
     protected function mapImageLink(): Attribute
     {
         return new Attribute(
-            get: fn () => asset('upload/projects_location/'.$this->map_image),
+            get: fn () => asset('storage/upload/projects_location/'.$this->map_image),
         );
     }
 

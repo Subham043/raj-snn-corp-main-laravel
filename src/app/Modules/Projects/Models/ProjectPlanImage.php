@@ -27,7 +27,7 @@ class ProjectPlanImage extends Model
     protected function imageLink(): Attribute
     {
         return new Attribute(
-            get: fn () => asset('upload/projects_plan_image/'.$this->image),
+            get: fn () => asset('storage/upload/projects_plan_image/'.$this->image),
         );
     }
 

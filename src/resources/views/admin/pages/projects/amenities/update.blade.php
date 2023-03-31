@@ -26,11 +26,13 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>$data->title])
+                                        @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>old('title') ? old('title') : $data->title])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'icon_image', 'label'=>'Icon Image'])
-                                        <img src="{{$data->icon_image_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @if(!empty($data->icon_image_link))
+                                            <img src="{{$data->icon_image_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @endif
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>

@@ -23,10 +23,10 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'unit', 'label'=>'Unit', 'value'=>$data->unit])
+                                        @include('admin.includes.input', ['key'=>'unit', 'label'=>'Unit', 'value'=>old('unit') ? old('unit') : $data->unit])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'type', 'label'=>'Type', 'value'=>$data->type])
+                                        @include('admin.includes.input', ['key'=>'type', 'label'=>'Type', 'value'=>old('type') ? old('type') : $data->type])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>

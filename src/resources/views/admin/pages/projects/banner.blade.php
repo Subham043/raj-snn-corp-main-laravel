@@ -26,17 +26,19 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>!empty($data) ? $data->heading : old('heading')])
+                                        @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>!empty($data) ? (old('heading') ? old('heading') : $data->heading) : old('heading')])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'sub_heading', 'label'=>'Sub-Heading', 'value'=>!empty($data) ? $data->sub_heading : old('sub_heading')])
+                                        @include('admin.includes.input', ['key'=>'sub_heading', 'label'=>'Sub-Heading', 'value'=>!empty($data) ? (old('sub_heading') ? old('sub_heading') : $data->sub_heading) : old('sub_heading')])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.file_input', ['key'=>'banner_image', 'label'=>'Banner Image'])
-                                        <img src="{{$data->banner_image_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @if(!empty($data->banner_image_link))
+                                            <img src="{{$data->banner_image_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @endif
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.textarea', ['key'=>'points', 'label'=>'Points', 'value'=>!empty($data) ? $data->points : old('points')])
+                                        @include('admin.includes.textarea', ['key'=>'points', 'label'=>'Points', 'value'=>!empty($data) ? (old('points') ? old('points') : $data->points) : old('points')])
                                         <p>
                                             <code>Note : </code> Use comma seperated points. eg: <i> test1, test2 </i>
                                         </p>
