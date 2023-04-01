@@ -28,7 +28,7 @@ class ProjectAmenities extends Model
     protected function iconImageLink(): Attribute
     {
         return new Attribute(
-            get: fn () => asset('storage/upload/projects_amenities/'.$this->icon_image),
+            get: fn () => asset('storage/public/upload/projects_amenities/'.$this->icon_image),
         );
     }
 

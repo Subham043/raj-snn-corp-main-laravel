@@ -30,14 +30,14 @@ class ProjectAbout extends Model
     protected function aboutLogoLink(): Attribute
     {
         return new Attribute(
-            get: fn () => asset('storage/upload/projects_about/'.$this->about_logo),
+            get: fn () => asset('storage/public/upload/projects_about/'.$this->about_logo),
         );
     }
 
     protected function leftImageLink(): Attribute
     {
         return new Attribute(
-            get: fn () => asset('storage/upload/projects_about/'.$this->left_image),
+            get: fn () => asset('storage/public/upload/projects_about/'.$this->left_image),
         );
     }
 
