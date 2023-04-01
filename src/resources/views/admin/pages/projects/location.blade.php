@@ -42,7 +42,9 @@
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.file_input', ['key'=>'map_image', 'label'=>'Map Image'])
-                                        <img src="{{$data->map_image_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @if(!empty($data->map_image_link))
+                                            <img src="{{$data->map_image_link}}" alt="" style="height:80px; object-fit:contain;">
+                                        @endif
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>!empty($data) ? $data->description : old('description')])
