@@ -1,7 +1,7 @@
 @if($data->ProjectBanner)
 <section class="">
     <div class="banner-holder2" style="background-image: url('{{$data->ProjectBanner->banner_image_link}}')">
-        <img src="{{ $data->ProjectBanner->banner_image_link }}" alt="">
+        <img src="{{ $data->ProjectBanner->banner_image_link }}" alt="Banner">
         <div class="banner-form-container">
             <div id="tophighlights">
 
@@ -42,7 +42,7 @@
                         </div>
                         <input type="hidden" name="page_url" id="page_url" value="{{Request::url()}}">
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary formbuttonstyler"
+                            <button type="submit" class="btn btn-primary formbuttonstyler" aria-label="Submit Form"
                                 id="submitBtn2">Submit</button>
                         </div>
                     </form>

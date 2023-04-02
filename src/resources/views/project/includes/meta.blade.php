@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>{{$data->meta_title}}</title>
@@ -32,7 +32,5 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css')}}">
 
-    <script>
-        {!!$data->meta_header!!}
-    </script>
+    {!!$data->meta_header!!}
 </head>

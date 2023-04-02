@@ -8,9 +8,7 @@
 <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
 <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}"></script>
 
-<script>
-    {!!$data->meta_footer!!}
-</script>
+{!!$data->meta_footer!!}
 
 <script type="text/javascript">
 (function( $ ) {
@@ -51,10 +49,10 @@
             infinite: true,
             adaptiveHeight: true,
             arrows: true,
-            prevArrow: '<button type="button" data-role="none" class="slick-prev"><i class="fas fa-long-arrow-alt-left"></i></button>',
-            nextArrow: '<button type="button" data-role="none" class="slick-next"><i class="fas fa-long-arrow-alt-right"></i></button>',
+            prevArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous Button"><i class="fas fa-long-arrow-alt-left"></i></button>',
+            nextArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next Button"><i class="fas fa-long-arrow-alt-right"></i></button>',
             customPaging: function(slider, i) {
-                return '<button> <img src="' + $(slider.$slides[i]).attr('img-src') + '"/></button>';
+                return '<button  aria-label="Image Slider Index"> <img src="' + $(slider.$slides[i]).attr('img-src') + '"/></button>';
             },
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -87,8 +85,8 @@
             nav: true,
             dots: false,
             navText: [
-                '<button type="button" data-role="none" class="slick-prev slick-arrow" style=""><i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i></button>',
-                '<button type="button" data-role="none" class="slick-next slick-arrow" style=""><i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i></button>'
+                '<button type="button" data-role="none" class="slick-prev slick-arrow" style="" aria-label="Previous Button"><i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i></button>',
+                '<button type="button" data-role="none" class="slick-next slick-arrow" style="" aria-label="Next Button"><i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i></button>'
             ]
         });
         $(".creation").slick({
@@ -96,8 +94,8 @@
             infinite: true,
             adaptiveHeight: true,
             // arrows: false,
-            prevArrow: '<button type="button" data-role="none" class="slick-prev"><i class="fas fa-long-arrow-alt-left"></i></button>',
-            nextArrow: '<button type="button" data-role="none" class="slick-next"><i class="fas fa-long-arrow-alt-right"></i></button>',
+            prevArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous Button"><i class="fas fa-long-arrow-alt-left"></i></button>',
+            nextArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next Button"><i class="fas fa-long-arrow-alt-right"></i></button>',
             slidesToShow: 4,
             slidesToScroll: 1,
             autoplay: true,

@@ -21,7 +21,7 @@
                         <label for="phone" class="form-label">Phone</label>
                         <input type="number" class="form-control" id="phone" name="phone" placeholder="983*******">
                     </div>
-                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn" aria-label="Submit Form">Submit</button>
                 </form>
 
             </div>

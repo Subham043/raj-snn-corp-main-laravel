@@ -10,7 +10,7 @@
             <div class="row mt-5 justify-sm-around">
                 @foreach ($data->ProjectSpecification as $item)
                 <div class="col-lg-4 col-md-6 col-sm-12 amenities-col">
-                    <img src="{{ $item->icon_image_link }}" alt="">
+                    <img src="{{ $item->icon_image_link }}" alt="{{$item->title}}">
                     <p>{{$item->title}}</p>
                 </div>
                 @endforeach

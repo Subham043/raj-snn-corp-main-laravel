@@ -11,12 +11,13 @@
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 map-col">
                     <iframe
+                        title="Map Iframe"
                         src="{{$data->ProjectLocation->location}}"
                         style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 image-col">
-                    <img src="{{ $data->ProjectLocation->map_image_link }}" alt="">
+                    <img src="{{ $data->ProjectLocation->map_image_link }}" alt="Map Image">
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 text-col">
                     <h2 class="main-title text-center">

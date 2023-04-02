@@ -12,7 +12,7 @@
                     <div class="gallery-slider slider">
                         @foreach ($data->ProjectGallery as $item)
                         <div class="slider-img" img-src="{{ $item->image_link }}">
-                            <img src="{{ $item->image_link }}" class="w-100" alt="">
+                            <img src="{{ $item->image_link }}" class="w-100" alt="Gallery Image {{$item->id}}">
                         </div>
                         @endforeach
                     </div>
