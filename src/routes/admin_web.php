@@ -22,7 +22,7 @@ use App\Modules\Projects\Controllers\ProjectConnectivityUpdateController;
 use App\Modules\Projects\Controllers\ProjectCreateController;
 use App\Modules\Projects\Controllers\ProjectDeleteController;
 use App\Modules\Projects\Controllers\ProjectGalleryCreateController;
-use App\Modules\Projects\Controllers\ProjectgalleryDeleteController;
+use App\Modules\Projects\Controllers\ProjectGalleryDeleteController;
 use App\Modules\Projects\Controllers\ProjectGalleryPaginateController;
 use App\Modules\Projects\Controllers\ProjectLocationController;
 use App\Modules\Projects\Controllers\ProjectPaginateController;
