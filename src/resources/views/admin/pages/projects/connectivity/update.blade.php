@@ -28,7 +28,7 @@
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.textarea', ['key'=>'points', 'label'=>'Points', 'value'=>old('points') ? old('points') : $data->points])
                                         <p>
-                                            <code>Note : </code> Use comma seperated points. eg: <i> test1, test2 </i>
+                                            <code>Note : </code> Use | seperated points. eg: <i> test1| test2 </i>
                                         </p>
                                     </div>
                                     <div class="col-xxl-12 col-md-12">

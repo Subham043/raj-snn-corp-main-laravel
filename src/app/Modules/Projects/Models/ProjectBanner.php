@@ -37,7 +37,7 @@ class ProjectBanner extends Model
     protected function pointsList(): Attribute
     {
         return new Attribute(
-            get: fn () => explode(",",$this->points),
+            get: fn () => explode("|",$this->points),
         );
     }
 
