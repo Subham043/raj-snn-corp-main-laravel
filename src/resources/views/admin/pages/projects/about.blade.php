@@ -123,7 +123,7 @@ validation
   .addField('#about_logo', [
     {
         rule: 'minFilesCount',
-        value: 1,
+        value: 0,
         errorMessage: 'Please select a about logo',
     },
     {
@@ -139,7 +139,7 @@ validation
   .addField('#left_image', [
     {
         rule: 'minFilesCount',
-        value: 1,
+        value: 0,
         errorMessage: 'Please select a left image',
     },
     {

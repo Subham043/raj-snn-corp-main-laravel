@@ -43,7 +43,7 @@ class ProjectService
 
     public function getBySlug(String $slug): Project
     {
-        return $this->projectModel->with(['ProjectAbout', 'ProjectGallery', 'ProjectAmenities', 'ProjectLocation', 'ProjectTable', 'ProjectPlanCategory.ProjectPlanImage', 'ProjectBanner', 'ProjectConnectivity'])->where('publish_status', PublishStatusEnum::ACTIVE->label())->where('slug', $slug)->firstOrFail();
+        return $this->projectModel->with(['ProjectAbout', 'ProjectThank', 'ProjectGallery', 'ProjectAmenities', 'ProjectLocation', 'ProjectTable', 'ProjectPlanCategory.ProjectPlanImage', 'ProjectBanner', 'ProjectConnectivity'])->where('publish_status', PublishStatusEnum::ACTIVE->label())->where('slug', $slug)->firstOrFail();
     }
 
     public function getPreview(Int $id): Project

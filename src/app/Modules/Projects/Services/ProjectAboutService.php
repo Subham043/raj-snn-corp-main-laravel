@@ -28,15 +28,21 @@ class ProjectAboutService
 
     public function createOrUpdate(ProjectAboutRequest $request, Int $project_id) : void
     {
-        $left_image = (new FileService)->save_file($request, 'left_image', $this->path);
-        $about_logo = (new FileService)->save_file($request, 'about_logo', $this->path);
+        $file_array = [];
+        if($request->hasFile('left_image')){
+            $left_image = (new FileService)->save_file($request, 'left_image', $this->path);
+            $file_array['left_image'] = $left_image;
+        }
+        if($request->hasFile('about_logo')){
+            $about_logo = (new FileService)->save_file($request, 'about_logo', $this->path);
+            $file_array['about_logo'] = $about_logo;
+        }
 
         $this->projectAboutModel->updateOrCreate(
             ['project_id' => $project_id],
             [
                 ...$request->except('left_image', 'about_logo'),
-                'about_logo' => $about_logo,
-                'left_image' => $left_image,
+                ...$file_array
             ]
         );
     }

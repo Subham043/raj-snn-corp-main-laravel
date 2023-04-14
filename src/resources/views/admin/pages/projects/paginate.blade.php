@@ -93,6 +93,9 @@
                                                         <a href="{{route('project_amenities_list.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">Amenities Section</a>
                                                     </div>
                                                     <div class="edit">
+                                                        <a href="{{route('project_thank.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">Thank You Section</a>
+                                                    </div>
+                                                    <div class="edit">
                                                         <a href="{{route('project_preview.get', $item->id)}}" target="_blank" style="background:purple;color:white;border-color:purple;" class="btn btn-sm btn-success edit-item-btn">Preview</a>
                                                     </div>
                                                     <div class="remove">

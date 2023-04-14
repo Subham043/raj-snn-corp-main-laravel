@@ -1,4 +1,4 @@
-<script src="https://kit.fontawesome.com/b6a944420c.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/b6a944420c.js" crossorigin="anonymous" async></script>
 <script src="{{ asset('assets/js/jquery.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/img-previewer.js') }}"></script>
@@ -234,6 +234,10 @@ const successToast = (message) => {
             const response = await axios.post('{{route('enquiry_create.post')}}', formData)
             successToast(response.data.message)
             event.target.reset()
+            setTimeout(()=> {
+                window.location.replace("{{route('project_view_thank.get', $data->slug)}}");
+            }
+            ,1000);
         } catch (error) {
             if(error?.response?.data?.errors?.name){
                 errorToast(error?.response?.data?.errors?.name[0])
@@ -312,6 +316,10 @@ const successToast = (message) => {
             console.log(response);
             successToast(response.data.message)
             event.target.reset()
+            setTimeout(()=> {
+                window.location.replace("{{route('project_view_thank.get', $data->slug)}}");
+            }
+            ,1000);
         } catch (error) {
             if(error?.response?.data?.errors?.name){
                 errorToast(error?.response?.data?.errors?.name[0])

@@ -2,9 +2,11 @@
 
 namespace App\Modules\Projects\Requests;
 
+use App\Modules\Projects\Models\ProjectBanner;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
+use Illuminate\Validation\Rule;
 
 
 class ProjectBannerRequest extends FormRequest
@@ -30,7 +32,10 @@ class ProjectBannerRequest extends FormRequest
             'heading' => 'required|string|max:500',
             'sub_heading' => 'nullable|string|max:500',
             'points' => 'required|string',
-            'banner_image' => 'required|image|mimes:jpeg,png,jpg,webp,avif',
+            'banner_image' => ['image','mimes:jpeg,png,jpg,webp,avif', Rule::requiredIf(function (){
+                $banner_image = ProjectBanner::where('project_id', $this->route('project_id'))->first();
+                return empty($banner_image->banner_image);
+            })],
         ];
     }
 

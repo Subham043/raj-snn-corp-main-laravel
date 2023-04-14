@@ -8,6 +8,7 @@ use App\Modules\Authentication\Controllers\LogoutController;
 use App\Modules\Authentication\Controllers\ProfileController;
 use App\Modules\Authentication\Controllers\ResetPasswordController;
 use App\Modules\Enquiries\Controllers\EnquiryDeleteController;
+use App\Modules\Enquiries\Controllers\EnquiryExcelController;
 use App\Modules\Enquiries\Controllers\EnquiryPaginateController;
 use App\Modules\Projects\Controllers\ProjectAboutController;
 use App\Modules\Projects\Controllers\ProjectAmenitiesCreateController;
@@ -43,6 +44,7 @@ use App\Modules\Projects\Controllers\ProjectTableCreateController;
 use App\Modules\Projects\Controllers\ProjectTableDeleteController;
 use App\Modules\Projects\Controllers\ProjectTablePaginateController;
 use App\Modules\Projects\Controllers\ProjectTableUpdateController;
+use App\Modules\Projects\Controllers\ProjectThankController;
 use App\Modules\Projects\Controllers\ProjectUpdateController;
 use Illuminate\Support\Facades\Route;
 
@@ -78,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/enquiry')->group(function () {
         Route::get('/', [EnquiryPaginateController::class, 'get', 'as' => 'enquiry_list.get'])->name('enquiry_list.get');
+        Route::get('/excel', [EnquiryExcelController::class, 'get', 'as' => 'enquiry_excel.get'])->name('enquiry_excel.get');
         Route::get('/delete/{id}', [EnquiryDeleteController::class, 'get', 'as' => 'enquiry_delete.get'])->name('enquiry_delete.get');
 
     });
@@ -92,6 +95,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update-post/{id}', [ProjectUpdateController::class, 'post', 'as' => 'project_update.post'])->name('project_update.post');
         Route::get('/about/{project_id}', [ProjectAboutController::class, 'get', 'as' => 'project_about.get'])->name('project_about.get');
         Route::post('/about-post/{project_id}', [ProjectAboutController::class, 'post', 'as' => 'project_about.post'])->name('project_about.post');
+        Route::get('/thank-you/{project_id}', [ProjectThankController::class, 'get', 'as' => 'project_thank.get'])->name('project_thank.get');
+        Route::post('/thank-you-post/{project_id}', [ProjectThankController::class, 'post', 'as' => 'project_thank.post'])->name('project_thank.post');
         Route::get('/banner/{project_id}', [ProjectBannerController::class, 'get', 'as' => 'project_banner.get'])->name('project_banner.get');
         Route::post('/banner-post/{project_id}', [ProjectBannerController::class, 'post', 'as' => 'project_banner.post'])->name('project_banner.post');
         Route::get('/location/{project_id}', [ProjectLocationController::class, 'get', 'as' => 'project_location.get'])->name('project_location.get');

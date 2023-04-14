@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="{{ empty($data->og_image) ? asset('assets/images/favicon.png') : $data->og_image_link }}" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="https://kit.fontawesome.com/b6a944420c.css" crossorigin="anonymous">
+    {{-- <link rel="stylesheet" href="https://kit.fontawesome.com/b6a944420c.css"> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/slick.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/tabs.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css')}}">

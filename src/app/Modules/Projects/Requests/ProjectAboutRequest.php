@@ -2,9 +2,11 @@
 
 namespace App\Modules\Projects\Requests;
 
+use App\Modules\Projects\Models\ProjectAbout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
+use Illuminate\Validation\Rule;
 
 
 class ProjectAboutRequest extends FormRequest
@@ -29,8 +31,14 @@ class ProjectAboutRequest extends FormRequest
         return [
             'rera' => 'required|string|max:500',
             'description' => 'required|string',
-            'left_image' => 'required|image|mimes:jpeg,png,jpg,webp,avif',
-            'about_logo' => 'required|image|mimes:jpeg,png,jpg,webp,avif',
+            'about_logo' => ['image','mimes:jpeg,png,jpg,webp,avif', Rule::requiredIf(function (){
+                $about = ProjectAbout::where('project_id', $this->route('project_id'))->first();
+                return empty($about->about_logo);
+            })],
+            'left_image' => ['image','mimes:jpeg,png,jpg,webp,avif', Rule::requiredIf(function (){
+                $about = ProjectAbout::where('project_id', $this->route('project_id'))->first();
+                return empty($about->left_image);
+            })],
         ];
     }
 

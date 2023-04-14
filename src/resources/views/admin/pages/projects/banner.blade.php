@@ -112,7 +112,7 @@ validation
   .addField('#banner_image', [
     {
         rule: 'minFilesCount',
-        value: 1,
+        value: 0,
         errorMessage: 'Please select a banner image',
     },
     {

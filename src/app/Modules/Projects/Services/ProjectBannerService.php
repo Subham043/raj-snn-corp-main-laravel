@@ -28,13 +28,17 @@ class ProjectBannerService
 
     public function createOrUpdate(ProjectBannerRequest $request, Int $project_id) : void
     {
-        $banner_image = (new FileService)->save_file($request, 'banner_image', $this->path);
+        $file_array = [];
+        if($request->hasFile('banner_image')){
+            $banner_image = (new FileService)->save_file($request, 'banner_image', $this->path);
+            $file_array['banner_image'] = $banner_image;
+        }
 
         $this->projectBannerModel->updateOrCreate(
             ['project_id' => $project_id],
             [
                 ...$request->except('banner_image'),
-                'banner_image' => $banner_image,
+                ...$file_array
             ]
         );
     }

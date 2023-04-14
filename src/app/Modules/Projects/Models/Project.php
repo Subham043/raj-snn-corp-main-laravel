@@ -112,6 +112,11 @@ class Project extends Model
         return $this->hasOne('App\Modules\Projects\Models\ProjectAbout', 'project_id');
     }
 
+    public function ProjectThank()
+    {
+        return $this->hasOne('App\Modules\Projects\Models\ProjectThank', 'project_id');
+    }
+
     public function ProjectLocation()
     {
         return $this->hasOne('App\Modules\Projects\Models\ProjectLocation', 'project_id');
