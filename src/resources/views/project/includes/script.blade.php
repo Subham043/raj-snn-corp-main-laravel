@@ -237,7 +237,7 @@ const successToast = (message) => {
             setTimeout(()=> {
                 window.location.replace("{{route('project_view_thank.get', $data->slug)}}");
             }
-            ,1000);
+            ,3000);
         } catch (error) {
             if(error?.response?.data?.errors?.name){
                 errorToast(error?.response?.data?.errors?.name[0])
