@@ -36,6 +36,7 @@
                                             <th class="sort" data-sort="customer_name">Name</th>
                                             <th class="sort" data-sort="customer_name">Email</th>
                                             <th class="sort" data-sort="customer_name">Phone</th>
+                                            <th class="sort" data-sort="customer_name">IP Address</th>
                                             <th class="sort" data-sort="customer_name">Page URL</th>
                                             <th class="sort" data-sort="date">Created Date</th>
                                             <th class="sort" data-sort="action">Action</th>
@@ -48,6 +49,7 @@
                                             <td class="customer_name">{{$item->name}}</td>
                                             <td class="customer_name">{{$item->email}}</td>
                                             <td class="customer_name">{{$item->phone}}</td>
+                                            <td class="customer_name">{{$item->ip_address}}</td>
                                             <td class="customer_name"><a href="{{$item->page_url}}" target="_blank" rel="noopener noreferrer">{{$item->page_url}}</a></td>
                                             <td class="date">{{$item->created_at}}</td>
                                             <td>

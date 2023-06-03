@@ -31,6 +31,7 @@ class EnquiryService
                 $q->where('name', 'like', '%' . $search . '%')
                 ->orWhere('email', 'like', '%' . $search . '%')
                 ->orWhere('phone', 'like', '%' . $search . '%')
+                ->orWhere('ip_address', 'like', '%' . $search . '%')
                 ->orWhere('page_url', 'like', '%' . $search . '%');
             })
             ->orderBy('id', 'DESC')->paginate($limit);
