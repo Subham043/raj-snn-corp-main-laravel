@@ -26,14 +26,16 @@ class EnquiryService
     {
         if ($request->has('search')) {
             $search = $request->input('search');
-            return $this->enquiryModel
-            ->where('name', 'like', '%' . $search . '%')
-            ->orWhere('email', 'like', '%' . $search . '%')
-            ->orWhere('phone', 'like', '%' . $search . '%')
-            ->orWhere('page_url', 'like', '%' . $search . '%')
+            return $this->enquiryModel->where('is_verified', true)
+            ->where(function($q) use($search){
+                $q->where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%')
+                ->orWhere('phone', 'like', '%' . $search . '%')
+                ->orWhere('page_url', 'like', '%' . $search . '%');
+            })
             ->orderBy('id', 'DESC')->paginate($limit);
         }
-        return $this->enquiryModel->orderBy('id', 'DESC')->paginate($limit);
+        return $this->enquiryModel->where('is_verified', true)->orderBy('id', 'DESC')->paginate($limit);
     }
 
     public function getById(Int $id): Enquiry
@@ -41,11 +43,20 @@ class EnquiryService
         return $this->enquiryModel->findOrFail($id);
     }
 
-    public function create(EnquiryRequest $request): void
+    public function create(EnquiryRequest $request): Enquiry
     {
-        $this->enquiryModel->create([
+        return $this->enquiryModel->create([
             ...$request->all(),
+            'otp' => rand(1000,9999),
+            'ip_address' => $request->ip(),
+            'is_verified' => false,
         ]);
+    }
+
+    public function update(array $data, Enquiry $enquiry): Enquiry
+    {
+        $enquiry->update($data);
+        return $enquiry;
     }
 
     public function delete(Enquiry $data): void

@@ -19,6 +19,7 @@ class EnquiryExport implements FromCollection,WithHeadings,WithMapping
             'name',
             'email',
             'phone',
+            'ip address',
             'page url',
             'created_at',
         ];
@@ -30,12 +31,13 @@ class EnquiryExport implements FromCollection,WithHeadings,WithMapping
             $data->name,
             $data->email,
             $data->phone,
+            $data->ip_address,
             $data->page_url,
             $data->created_at,
          ];
     }
     public function collection()
     {
-        return Enquiry::all();
+        return Enquiry::where('is_verified', true)->get();
     }
 }

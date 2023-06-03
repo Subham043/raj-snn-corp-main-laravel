@@ -27,8 +27,8 @@ class EnquiryRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'phone' => 'nullable|integer|digits:10',
-            'email' => 'nullable|string|email|max:255',
+            'phone' => 'required|integer|digits:10',
+            'email' => 'required|string|email|max:255',
             'page_url' => 'nullable|string',
         ];
     }

@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('name', 500);
             $table->string('email');
             $table->string('phone');
+            $table->string('ip_address')->nullable();
+            $table->string('otp')->nullable();
+            $table->boolean('is_verified')->default(0);
             $table->text('page_url');
             $table->timestamps();
             $table->index(['id', 'created_at']);

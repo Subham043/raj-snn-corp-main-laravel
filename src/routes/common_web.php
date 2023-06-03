@@ -17,4 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'throttle:3,1'], function () {
     Route::post('/enquiry/create', [EnquiryCreateController::class, 'post', 'as' => 'enquiry_create.post'])->name('enquiry_create.post');
+    Route::post('/otp/resend', [EnquiryCreateController::class, 'resendOtp', 'as' => 'enquiry.resendOtp'])->name('enquiry.resendOtp');
+Route::post('/otp/{uuid}', [EnquiryCreateController::class, 'verifyOtp', 'as' => 'enquiry.verifyOtp'])->name('enquiry.verifyOtp');
 });

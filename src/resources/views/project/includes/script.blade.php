@@ -155,14 +155,7 @@
             myModal.show();
         }, 5000);
 
-    });
-})(jQuery);
-
-</script>
-
-
-<script type="text/javascript">
-const errorToast = (message) => {
+        const errorToast = (message) => {
     iziToast.error({
         title: 'Error',
         message: message,
@@ -178,6 +171,12 @@ const successToast = (message) => {
         timeout: 6000
     });
 }
+    let uuid = null;
+    let link = null;
+    var myModalOtp = new bootstrap.Modal(document.getElementById('staticBackdropContact'), {
+        keyboard: false
+    })
+
     // initialize the validation library
     const validation = new JustValidate('#contact-form', {
           errorFieldCssClass: 'is-invalid',
@@ -232,12 +231,17 @@ const successToast = (message) => {
             formData.append('phone',document.getElementById('phone').value)
             formData.append('page_url',document.getElementById('page_url').value)
             const response = await axios.post('{{route('enquiry_create.post')}}', formData)
-            successToast(response.data.message)
-            event.target.reset()
-            setTimeout(()=> {
-                window.location.replace("{{route('project_view_thank.get', $data->slug)}}");
-            }
-            ,3000);
+            // successToast(response.data.message)
+            // event.target.reset()
+            // setTimeout(()=> {
+            //     window.location.replace("{{route('project_view_thank.get', $data->slug)}}");
+            // }
+            // ,3000);
+            event.target.reset();
+            uuid = response.data.uuid;
+            link = response.data.link;
+            myModal.hide()
+            myModalOtp.show()
         } catch (error) {
             if(error?.response?.data?.errors?.name){
                 errorToast(error?.response?.data?.errors?.name[0])
@@ -313,13 +317,17 @@ const successToast = (message) => {
             formData.append('phone',document.getElementById('phone2').value)
             formData.append('page_url',document.getElementById('page_url').value)
             const response = await axios.post('{{route('enquiry_create.post')}}', formData)
-            console.log(response);
-            successToast(response.data.message)
-            event.target.reset()
-            setTimeout(()=> {
-                window.location.replace("{{route('project_view_thank.get', $data->slug)}}");
-            }
-            ,1000);
+            // console.log(response);
+            // successToast(response.data.message)
+            // event.target.reset()
+            // setTimeout(()=> {
+            //     window.location.replace("{{route('project_view_thank.get', $data->slug)}}");
+            // }
+            // ,1000);
+            event.target.reset();
+            uuid = response.data.uuid;
+            link = response.data.link;
+            myModalOtp.show()
         } catch (error) {
             if(error?.response?.data?.errors?.name){
                 errorToast(error?.response?.data?.errors?.name[0])
@@ -340,5 +348,76 @@ const successToast = (message) => {
             submitBtn.disabled = false;
         }
       });
+
+      const validationOtp = new JustValidate('#otpForm', {
+              errorFieldCssClass: 'is-invalid',
+        });
+        // apply rules to form fields
+        validationOtp
+          .addField('#otp', [
+            {
+              rule: 'required',
+              errorMessage: 'OTP is required',
+            },
+          ])
+          .onSuccess(async (event) => {
+            var submitOtpBtn = document.getElementById('submitOtpBtn')
+            submitOtpBtn.value = 'Submitting ...'
+            submitOtpBtn.disabled = true;
+            try {
+                var formData = new FormData();
+                formData.append('otp',document.getElementById('otp').value)
+
+                const response = await axios.post(link, formData)
+                event.target.reset();
+                uuid = null;
+                link = null;
+                myModalOtp.hide()
+                successToast(response.data.message)
+                setTimeout(()=> {
+                    window.location.replace("{{route('project_view_thank.get', $data->slug)}}");
+                }
+                ,3000);
+            }catch (error){
+                if(error?.response?.data?.errors?.otp){
+                    errorToast(error?.response?.data?.errors?.otp[0])
+                }
+                if(error?.response?.data?.message){
+                    errorToast(error?.response?.data?.message)
+                }
+                if(error?.response?.data?.error){
+                    errorToast(error?.response?.data?.error)
+                }
+            }finally{
+                submitOtpBtn.value =  `Submit`
+                submitOtpBtn.disabled = false;
+            }
+          });
+
+          document.getElementById('resendOtpBtn').addEventListener('click', async function(event){
+            if(uuid){
+                event.target.innerText = 'Sending ...'
+                event.target.disabled = true;
+                try {
+                    var formData = new FormData();
+                    formData.append('uuid',uuid)
+                    const response = await axios.post('{{route('enquiry.resendOtp')}}', formData)
+                    successToast(response.data.message)
+                }catch (error){
+                    if(error?.response?.data?.message){
+                        errorToast(error?.response?.data?.message)
+                    }
+                    if(error?.response?.data?.error){
+                        errorToast(error?.response?.data?.error)
+                    }
+                }finally{
+                    event.target.innerText = 'Resend OTP'
+                    event.target.disabled = false;
+                }
+            }
+          })
+
+    });
+})(jQuery);
 
 </script>
